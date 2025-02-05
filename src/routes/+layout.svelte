@@ -195,7 +195,7 @@
 			visitedSlug = visitedSlug.replace(`[${Object.keys(to.params)[0]}]`, Object.values(to.params)[0]);
 		}
 
-		reportEvents('UPSERT', $sessionAnalytics, 'mSessions');
+		reportEvents('UPSERT', $sessionAnalytics, 'sessions');
 
 		$page?.data?.indices?.forEach((experimentSeen) => {
 			if (experimentSeen.returningExperimentVisitor) {
@@ -216,10 +216,10 @@
 				redirect: "follow"
 			};
 
-			fetch("http://localhost:3030/prod/variant/update", requestOptions)
-				.then((response) => response.text())
-				.then((result) => console.log(result))
-				.catch((error) => console.error(error));
+			// fetch("https://api.mtrix.io/prod/variant/update", requestOptions)
+			// 	.then((response) => response.text())
+			// 	.then((result) => console.log(result))
+			// 	.catch((error) => console.error(error));
 		});
 
 		let pageViewTraits = {};
@@ -326,7 +326,7 @@
 	function reportEv() {
 		if ($sessionAnalytics.sessionId.length > 0) {
 			// console.log($sessionAnalytics);
-			reportEvents('UPSERT', $sessionAnalytics, 'mSessions');
+			reportEvents('UPSERT', $sessionAnalytics, 'sessions');
 		} else {
 			console.log('Not yet');
 		}
@@ -471,55 +471,55 @@
 			};
 			
 			console.time('journeyFetch');
-			fetch(`http://localhost:3030/prod/journeys/upsert`, requestOptions) 
-				.then((response) => response.json())
-				.then((result) => {
-					$actions = {
-						id: journeyId,
-						mouseEvents: {
-							click: [],
-							mousemove: [],
-							mousedown: [],
-							mouseup: [],
-							mouseout: [],
-						},
-						keyboardEvents: {
-							keydown: [],
-							keyup: [],
-							keypress: []
-						},
-						formEvents: {
-							focus: [],
-							blur: [],
-							change: [],
-							submit: [] 
-						},
-						windowEvents: {
-							resize: [],
-							scroll: [],
-							load: [],
-							blur: [],
-							focus: [],
-							selection: []
-						},
-						touchEvents: {
-							touchstart: [],
-							touchend: [],
-							touchmove: []
-						},
-						// Page change
-						// RageClick
-						// Error
-						logs: {
-							rageclick: [],
-							pagechange: []
-						}
-					};
+			// fetch(`https://api.mtrix.io/prod/journeys/upsert`, requestOptions) 
+			// 	.then((response) => response.json())
+			// 	.then((result) => {
+			// 		$actions = {
+			// 			id: journeyId,
+			// 			mouseEvents: {
+			// 				click: [],
+			// 				mousemove: [],
+			// 				mousedown: [],
+			// 				mouseup: [],
+			// 				mouseout: [],
+			// 			},
+			// 			keyboardEvents: {
+			// 				keydown: [],
+			// 				keyup: [],
+			// 				keypress: []
+			// 			},
+			// 			formEvents: {
+			// 				focus: [],
+			// 				blur: [],
+			// 				change: [],
+			// 				submit: [] 
+			// 			},
+			// 			windowEvents: {
+			// 				resize: [],
+			// 				scroll: [],
+			// 				load: [],
+			// 				blur: [],
+			// 				focus: [],
+			// 				selection: []
+			// 			},
+			// 			touchEvents: {
+			// 				touchstart: [],
+			// 				touchend: [],
+			// 				touchmove: []
+			// 			},
+			// 			// Page change
+			// 			// RageClick
+			// 			// Error
+			// 			logs: {
+			// 				rageclick: [],
+			// 				pagechange: []
+			// 			}
+			// 		};
 
-					lastCheckedTime = Date.now()
-					console.timeEnd('journeyFetch');
-				})
-				.catch((error) => console.error(error));
+			// 		lastCheckedTime = Date.now()
+			// 		console.timeEnd('journeyFetch');
+			// 	})
+			// 	.catch((error) => console.error(error));
 
 			// $actions = [];
 		}

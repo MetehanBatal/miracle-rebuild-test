@@ -15,7 +15,7 @@ const generateVariantIndices = (experiment, selectedVariant) => {
 		variantId: ''
 	};
 
-	expIndices.experimentId = experiment.id;
+	expIndices.experimentId = experiment.experimentId;
 	expIndices.variantId = selectedVariant;
 
 	for (let index = 0; index < experimentVariants.length; index++) {
@@ -210,7 +210,7 @@ const logAction = (type, action, traits) => {
 		return currentActions;
 	});
 
-	// reportEvents('POST', action, 'mEvents');
+	// reportEvents('POST', action, 'events');
 };
 
 const clickOutside = (node, ignoreById) => {
@@ -293,7 +293,7 @@ const logEvent = (type, traits, overwrites) => {
         });
 	}
 
-	reportEvents('POST', event, 'mEvents');
+	reportEvents('POST', event, 'events');
 }
 
 const reportEvents = async (method, content, category) => {
@@ -315,7 +315,8 @@ const reportEvents = async (method, content, category) => {
 	};
 
 	try {
-		const response = await fetch(`http://localhost:3030/prod/${category}${urlPrefix}`, requestOptions);
+		console.log(JSON.parse(bodyText), content);
+		const response = await fetch(`https://api.mtrix.io/storefront/${category}${urlPrefix}`, requestOptions);
 		const result = await response.json();
 
 		return result;

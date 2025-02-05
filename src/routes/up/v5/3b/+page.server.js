@@ -10,7 +10,7 @@ export async function load(event) {
 		productType: 'sheets'
 	};
 	
-	const pageDetailsReq = await fetch(`http://localhost:3030/prod/mExperiments/getPageDetails?url=https://miracle-rebuild.vercel.app${route}&status=in-progress`);
+	const pageDetailsReq = await fetch(`https://api.mtrix.io/storefront/getPageDetails?url=https://miracle-rebuild.vercel.app${route}&status=in-progress`);
 	const pageDetailsRes = await pageDetailsReq.json();
 
 	let assignedVariantId;

@@ -11,7 +11,7 @@ export async function handle({ event, resolve }) {
 		// if (!cache.has(nvsUid)) {
 
 			// Fetch data from the API only if it's not already cached
-			const userDataReq = await fetch(`http://localhost:3030/prod/mSessions/getUserDetails?userId=${nvsUid}`);
+			const userDataReq = await fetch(`https://api.mtrix.io/storefront/getVisitorDetails?userId=${nvsUid}`);
 			const userDataRes = await userDataReq.json();
 			
 			// cache.set(nvsUid, userDataRes.data);

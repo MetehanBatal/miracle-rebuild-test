@@ -10,7 +10,7 @@ export async function load({ url, fetch }) {
         throw new Error('The "pageId" query parameter is required.');
     }
 
-    const apiUrl = `http://localhost:3030/prod/contentModeling/pageContent?pageId=${encodeURIComponent(pageId)}`;
+    const apiUrl = `https://api.mtrix.io/prod/contentModeling/pageContent?pageId=${encodeURIComponent(pageId)}`;
 
     try {
         const response = await fetch(apiUrl);

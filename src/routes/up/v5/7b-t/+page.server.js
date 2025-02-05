@@ -9,7 +9,7 @@ const route = event.route.id;
 const existingIndices = event.locals?.userExperiments && event.locals?.userExperiments?.length > 0 ? event.locals.userExperiments : [];
 const returningVisitor = event.locals.returningVisitor;
 
-const pageDetailsReq = await fetch('http://localhost:3030/prod/mExperiments/getPageDetails?url=' + route + '&status=in-progress');
+const pageDetailsReq = await fetch('https://api.mtrix.io/storefront/getPageDetails?url=' + route);
 const pageDetailsRes = await pageDetailsReq.json();
 
 let experimentData = pageDetailsRes.data.experiments;
@@ -39,7 +39,7 @@ if (experimentData) {
 			continue;
 		}
 
-		let matchingData = existingIndices.length > 0 ? existingIndices.find(item => item.variantIndices.experimentId === experiment.id) : undefined;
+		let matchingData = existingIndices.length > 0 ? existingIndices.find(item => item.variantIndices.experimentId === experiment.experimentId) : undefined;
 
 		let returningExperimentVisitor = false;
 
@@ -47,7 +47,7 @@ if (experimentData) {
 			returningExperimentVisitor = true;
 		}
 
-		let experimentId = experiment.id;
+		let experimentId = experiment.experimentId;
 		let variantId = returningExperimentVisitor ? matchingData.variantIndices.variantId : experiment.selectedVariant.variantId;
 		let variants = returningExperimentVisitor ? matchingData.variantIndices.variants : experiment.variants[0].arms;
 		let order = returningExperimentVisitor ? matchingData.variantIndices.order : experiment.selectedVariant.order;
