@@ -1,0 +1,50 @@
+.bold-font {
+	font-weight: 700 !important;
+}
+
+.semi-font {
+	font-weight: 500 !important;
+}
+
+/* START - Fonts */
+@font-face {
+	font-family: "Brandon";
+	src: url("/assets/fonts/Brandon/Brandon_bld.woff2");
+	font-weight: 700;
+	font-style: bold;
+	font-display: swap;
+} 
+
+@font-face {
+	font-family: "Brandon";
+	src: url("/assets/fonts/Brandon/Brandon_med.woff2");
+	font-weight: 500;
+	font-style: medium;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Brandon";
+	src: url("/assets/fonts/Brandon/Brandon_reg.woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+/*@font-face {
+	font-family: "Ellenluff larken";
+	src: url("https://try.miraclebrand.co/sheets/assets/fonts/EllenLuff---Larken-Bold.woff2") format("woff2");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}*/
+
+@font-face {
+	font-family: "Ellenluff larken";
+	src: url("/assets/fonts/Ellenluff/EllenLuff---Larken-Light.woff2") format("woff2");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* END - Fonts*/

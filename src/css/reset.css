@@ -1,0 +1,22 @@
+:root{
+	--primary-color:#FFFEF2;
+	--secondary-color:#000000
+}
+
+*{
+	box-sizing:border-box;
+	margin:0
+}
+
+body {
+    font-family: 'Brandon';
+}
+
+img {
+	max-width: 100%;
+	vertical-align: bottom;
+}
+
+*:focus-visible {
+	outline: none;
+}

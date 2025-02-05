@@ -1,0 +1,111 @@
+body.in-edit {
+	padding-right: 6rem;
+
+	background-color: transparent!important;
+}
+
+body.in-edit .body-wrapper {
+	display: block!important;
+	background-color: var(--primary-color);
+}
+
+body.in-edit .atc-sticky-banner {
+	width: calc(100% - 6rem);
+}
+
+.editing {
+	border: .4rem solid #F37361;
+}
+
+.edit-icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	position: fixed;
+	top: 0;
+	right: 0;
+
+	width: 4.8rem;
+	height: 4.8rem;
+
+	border-radius: .4rem;
+
+	cursor: pointer;
+
+	will-change: top;
+	transition: .36s top ease-in-out;
+}
+
+.edit-icon:hover,
+.edit-icon.active {
+	background-color: #1B2027;
+	border: .1rem solid #383C42;
+}
+
+.edit-icon svg {
+	width: 2.4rem;
+}
+
+.edit-icon path {
+	stroke: #88888A;
+}
+
+.edit-icon:hover path,
+.edit-icon.active path {
+	stroke: #FFFFFF;
+}
+
+.text-editor {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+
+	padding: .8rem;
+
+	background-color: #1B2027;
+	border: .2rem solid #383C42;
+	border-radius: .8rem;
+
+	will-change: top;
+	transition: .36s top ease-in-out;
+
+	z-index: 999999;
+}
+
+.text-editor > div {
+	display: flex;
+}
+
+.vertical-divider {
+	width: .1rem;
+	height: 2.4rem;
+
+	background-color: #383C42;
+
+	margin: 0 .8rem;
+}
+
+.editor_item-group {
+	display: flex;
+	align-items: center;
+
+	gap: .8rem;
+}
+
+.editor_item {
+	display: flex;
+	align-items: center;
+
+	padding: .4rem;
+
+	cursor: pointer;
+}
+
+
+

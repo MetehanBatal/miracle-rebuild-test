@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- <link rel="preload" as="image" href="https://miracle-rebuild.vercel.app/assets/images/sliders_avif/stone/1.webp" fetchpriority="highest" /> -->
+		<!-- <meta name="robots" content="noindex" /> -->
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+
+
+		%sveltekit.head%
+
+		<script>
+			;(function () {
+				var src = '//cdn.jsdelivr.net/npm/eruda';
+				if (!/testMode=true/.test(window.location) && localStorage.getItem('active-eruda') != 'true') return;
+				document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+				document.write('<scr' + 'ipt>eruda.init({tool: ["console", "network", "resources"]});</scr' + 'ipt>');
+			})();
+		</script>
+	</head>
+	<body>
+		<div style="display: contents" class="body-wrapper">%sveltekit.body%</div>
+	</body>
+
+<!-- 	<script src="https://cdn.shopmiraclebrand.co/js/cart_loader.js" async defer></script>
+	<script src="https://try.miraclebrand.co/pixel.js" async defer></script> -->
+</html>
