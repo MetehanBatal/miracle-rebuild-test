@@ -1,4 +1,15 @@
 <script>
+	import { page } from '$app/stores';
+	import { afterNavigate } from '$app/navigation';
+
+	let firstUpsell = true;
+	let upsellAccepted = false;
+
+	afterNavigate(async (e) => {
+		firstUpsell = $page.url.pathname === '/up/v6/1a-v5';
+		upsellAccepted = $page.url.searchParams.get('upsell');
+	});
+
 	// Importing global CSS files
 	// 
 	import '../../../css/upsell.css';
@@ -12,6 +23,7 @@
 
 <main>
 	<div class="container">
+		{#if firstUpsell || upsellAccepted}
 		<!-- START - Confirmation Box -->
 		<div class="confirmation-box">
 			<svg width="25px" height="18px" viewBox="0 0 25 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -24,13 +36,22 @@
 			    </g>
 			</svg>
 
+			{#if firstUpsell}
 			<div>
 				<h4>CONGRATULATIONS! Your Order Is Complete!</h4>
 
 				<p>Add the following deals to your order with only one click!</p>
 			</div>
+			{:else}
+			<div>
+				<h4>CONFIRMED! Item has been added to your existing order!</h4>
+
+				<p>Check out our other offer below!</p>
+			</div>
+			{/if}
 		</div>
 		<!-- END - Confirmation Box -->
+		 {/if}
 
 		<!-- START - Navbar -->
 		<nav>

@@ -84,11 +84,11 @@
 	</div>
 
 	<div class="slider-button prev-button" on:click={() => slider.prev()}>
-		<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg"><title>Previous</title><g id="design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="01_landing_funnel" transform="translate(-30.000000, -460.000000)"><g id="03_gallery" transform="translate(0.000000, 117.000000)"><g id="Group-7-Copy-3" transform="translate(50.000000, 363.000000) scale(-1, 1) translate(-50.000000, -363.000000) translate(30.000000, 343.000000)"><circle id="Oval" fill="#000000" cx="20" cy="20" r="20"></circle><g id="navigation-arrow" transform="translate(16.551724, 11.034483)" fill="#FFFEF2" fill-rule="nonzero"><polygon id="navigation-arrow-right" transform="translate(4.729064, 8.275862) rotate(-90.000000) translate(-4.729064, -8.275862) " points="11.0531804 3.54679803 4.72906404 9.39515302 -1.59505234 3.54679803 -3.54679803 5.35165468 4.72906404 13.0049261 13.0049261 5.35165468"></polygon></g></g></g></g></g></svg>
+		<svg version="1.1" id="navigation-arrow-right_1_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 8 13" style="enable-background:new 0 0 8 13;" xml:space="preserve"><polygon points="0.4,1.7 4.8,6.5 0.4,11.2 1.8,12.7 7.5,6.5 1.8,0.3 " fill="#ffffff"></polygon></svg>
 	</div>
 
 	<div class="slider-button next-button" on:click={() => slider.next()}>
-		<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg"><title>Next</title><g id="design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="01_landing_funnel" transform="translate(-782.000000, -460.000000)"><g id="03_gallery" transform="translate(0.000000, 117.000000)"><g id="Group-7-Copy" transform="translate(782.000000, 343.000000)"><circle id="Oval" fill="#000000" cx="20" cy="20" r="20"></circle><g id="navigation-arrow" transform="translate(16.551724, 11.034483)" fill="#FFFEF2" fill-rule="nonzero"><polygon id="navigation-arrow-right" transform="translate(4.729064, 8.275862) rotate(-90.000000) translate(-4.729064, -8.275862) " points="11.0531804 3.54679803 4.72906404 9.39515302 -1.59505234 3.54679803 -3.54679803 5.35165468 4.72906404 13.0049261 13.0049261 5.35165468"></polygon></g></g></g></g></g></svg>
+		<svg version="1.1" id="navigation-arrow-right_1_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 8 13" style="enable-background:new 0 0 8 13;" xml:space="preserve"><polygon points="0.4,1.7 4.8,6.5 0.4,11.2 1.8,12.7 7.5,6.5 1.8,0.3 " fill="#ffffff"></polygon></svg>
 	</div>
 	{:else if hasVideo}
 	<div class="ellen-banner">
@@ -120,10 +120,12 @@
 
 	.slider-button{
 		position: absolute;
-		top:50%;
+		top:calc(50% - 3.1rem);
+		display:flex;
+		justify-content:center;
 		align-items:center;
-		width:2.9rem;
-		height:2.9rem;
+		width:3rem;
+		height:3rem;
 		background-color:var(--secondary-color);
 		border-radius:100%;
 		transform:translate3d(0,-50%,0);
@@ -131,10 +133,19 @@
 	}
 
 	.slider-button.prev-button{
-		left:1%
+		left:1.5rem
 	}
 
+	.slider-button.prev-button svg{
+		transform: translateX(-0.1rem) rotate(180deg);
+	}
+
+	.slider-button svg{
+		width:.8rem;
+		transform:translateX(.1rem);
+	} 
+
 	.slider-button.next-button{
-		right:1%
+		right:1.5rem
 	}
 </style>

@@ -1,6 +1,6 @@
 <footer>
 	<p>
-		Copyright 2023. Pattern Brands LLC. All rights reserved.
+		Copyright 2025. Pattern Brands LLC. All rights reserved.
 	</p>
 
 	<div>

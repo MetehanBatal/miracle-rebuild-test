@@ -25,7 +25,7 @@ img {
 	outline: none;
 }
 
-nav {
+.navbar {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,6 +38,7 @@ nav {
 
 /* TERMLY CSS START */
 .termly-styles-termly-banner-e1ed59 {
+    max-width: none!important;
     width: 100% !important;
     margin: 0 !important;
     left: 0;
@@ -82,9 +83,6 @@ nav {
 }
 .banner-text-holder strong {
     font-family: "Brandon" !important;
-}
-
-strong {
     margin-left: .2rem;
 }
 
@@ -183,7 +181,7 @@ strong {
 }
 
 @media screen and (min-width : 768px) {
-    nav {
+    .navbar {
         height: 7rem;
     }
     .mobile-hidden {

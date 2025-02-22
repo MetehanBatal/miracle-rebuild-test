@@ -1,7 +1,7 @@
 <script>
     import { purchaseLog } from "../../../../stores/writables/purchaseLog";
     import { browser } from "$app/environment";
-import { onMount } from 'svelte';
+    import { onMount } from 'svelte';
 
     console.log($purchaseLog);
 
@@ -11,13 +11,13 @@ import { onMount } from 'svelte';
 
     const bannerContent = {
         h4: `Your Antibacterial Bedroom Isn't Complete Without a Comforter!`,
-        h3: `Get our newest silver infused comforter <span class="color-green">30% OFF!</span>`,
+        h3: `Get our newest silver infused comforter <span class="color-green">25% OFF!</span>`,
         p: `We are offering our premium comforter to new customers only!`,
     };
 
     const hasSlider = true;
     const imageCount = 5;
-    const slug = "5b";
+    const slug = "5b-cooling";
 
     let usdPrefix = "";
        
@@ -54,31 +54,25 @@ import { onMount } from 'svelte';
         <p class="upsell-description">
             Designed to keep you at the perfect temperature all night long. To top it off, the silver-infused fibers prevent up to 99.7% of bacteria growth, helping you sleep in clean comfort.
         </p>
-
+        
         <ul>
             <li>
                 <div class="icon-holder">
                     <img src="/assets/images/icons/tick.svg" alt="Upsell - Miracle Made">
                 </div>
-                <p>Perfect temperature for your body all night long</p>
+                <p>Makes you feel up to 4° cooler upon contact</p>
             </li>
             <li>
                 <div class="icon-holder">
                     <img src="/assets/images/icons/tick.svg" alt="Upsell - Miracle Made">
                 </div>
-                <p>Ultra-luxurious, 300-thread count Miracle Clean & Cool™ fabric</p>
+                <p>Silvadur™ Antimicrobial Technology</p>
             </li>
             <li>
                 <div class="icon-holder">
                     <img src="/assets/images/icons/tick.svg" alt="Upsell - Miracle Made">
                 </div>
-                <p>Infused with anti-bacterial silver</p>
-            </li>
-            <li>
-                <div class="icon-holder">
-                    <img src="/assets/images/icons/tick.svg" alt="Upsell - Miracle Made">
-                </div>
-                <p>Hypoallergenic and 100% vegan</p>
+                <p>Hypoallergenic</p>
             </li>
         </ul>
 
@@ -117,19 +111,11 @@ import { onMount } from 'svelte';
             </div>
         </div>
 
-        <a
-            href="#"
-            class="checkout-accept-upsell button---yes-upsell cta-button"
-            data-upsell-type="upgrade-variant"
-            data-upsell-param1="37673238298774"
-            data-next-url="https://try.miraclebrand.co/up/v6/4b?upsell=true"
-        >
-            Yes, Upgrade My Order with 1-Click-buy!
+        <a href="#" class="checkout-accept-upsell button---yes-upsell cta-button" data-upsell-type="upgrade-variant" data-upsell-param1="37673238298774" data-next-url="/up/v6/4b?upsell=true">
+            Yes, Add To My Order with 1-Click-buy!
         </a>
 
-        <a href="/up/v6/4b" class="link"
-            >No, thank you! I don’t want to get this one-time-only offer.</a
-        >
+        <a href="/up/v6/4b" class="link">No, thank you! I don’t want to get this one-time-only offer.</a>
 
         <hr />
 

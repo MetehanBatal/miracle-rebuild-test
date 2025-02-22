@@ -148,14 +148,6 @@
         })
 	}
 
-	function onclickPrev() {
-		slider.prev();
-	}
-
-	function onclickNext() {
-		slider.next();
-	}
-
 	function handleSizeSelection(trigger, size) {
 		selectedSize = size.replace('_', ' ');
 
@@ -165,10 +157,6 @@
 
 		if (trigger.target.classList.contains('out-of-stock')) {
 			handleOutOfStock('size'); }
-	}
-
-	function handleClick() {
-		handleSubmit();
 	}
 
 	function handleColorSelection(element, value) {

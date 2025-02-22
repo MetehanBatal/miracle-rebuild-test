@@ -2,13 +2,10 @@
 import { browser } from '$app/environment';
  
 import ATCSection from '$lib/sheets/ATCSection.svelte';
-import CarouselSection from '$lib/sheets/LogoCarousel.svelte';
 const PropSection = import ('$lib/sheets/PropSection.svelte');
 const ReviewsSection = import ('$lib/shared/Reviews.svelte');
 const FreeTrialSection = import ('$lib/sheets/FreeTrialSection.svelte');
-const SizeGuide = import ('$lib/sheets/SizeGuide.svelte');
 const FAQSection = import ('$lib/shared/FAQSection.svelte');
-const ATCBanner = import ('$lib/sheets/ATCBanner.svelte');
 
 import {sheetFAQs} from '../../../stores/static/faqs/sheets';
 import {reviews} from '../../../stores/static/reviews/sheets';
@@ -17,8 +14,6 @@ import {reviews} from '../../../stores/static/reviews/sheets';
 export let data;
 
 let pageCrumbs = data.pageCrumbs;
-let sizeGuideOpened = false;
-
 
 let title = 'Miracle Made® Sheets | Miracle Made';
 let blurArray = [
@@ -63,11 +58,6 @@ function onBlur() {
 	<meta content={pageCrumbs.pageType} name="checkout-aux-page-name">
 
 	<meta content="Miracle Made® Sheets" name="description">
-
-	{#if browser}
-	<!-- <script src="https://cdn.shopmiraclebrand.co/js/cart_loader.js" defer></script> -->
-	<!-- <script src="https://try.miraclebrand.co/pixel.js" defer></script> -->
-	{/if}
 </svelte:head>
 
 <svelte:window on:blur={onBlur} on:focus={onFocus} />

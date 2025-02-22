@@ -17,7 +17,7 @@
 
 	const hasSlider = true;
 	const imageCount = 5;
-	const slug = '1b';
+	const slug = '1b-v2';
     let usdPrefix = "";
        
     onMount(() => {
@@ -54,25 +54,25 @@
 				<div class="icon-holder">
 					<img src="/assets/images/icons/tick.svg" alt="Upsell - Miracle Made">
 				</div>
-				<p>Latest Gen 3 of Miracle Clean & Cool™ Fabrics</p>
+				<p><strong>COOLIT™ technology</strong> helps keep you up to an extra 3.6°F cooler for optimal sleep</p>
 			</li>
 			<li>
 				<div class="icon-holder">
 					<img src="/assets/images/icons/tick.svg" alt="Upsell - Miracle Made">
 				</div>
-				<p>Our Most Premium Eucalyptus Blend with Sateen Weave</p>
+				<p><strong>Patented True Grip®</strong> technology ensures an extra snug fit to keep your fitted sheet in place</p>
 			</li>
 			<li>
 				<div class="icon-holder">
 					<img src="/assets/images/icons/tick.svg" alt="Upsell - Miracle Made">
 				</div>
-				<p>Enhanced Breathability</p>
+				<p>Also made with <strong>Miracle Clean & Cool™</strong>: Our Premium Eucalyptus Blend with Sateen Weave</p>
 			</li>
 		</ul>
 
 		<div class="price-container">
 			<div>
-				<h4 class="price"><span class="non-usa">{usdPrefix}</span>$30*</h4>
+				<h4 class="price"><span class="non-usa">{usdPrefix} </span>$30*</h4>
 				<p><strong>Per Upgrade</strong></p>
 			</div>
 
@@ -85,8 +85,8 @@
 			</div>
 		</div>
 
-		<a href="#" class="checkout-accept-upsell button---yes-upsell cta-button" data-upsell-type="upgrade-variant" data-upsell-param1="39767106650262" data-next-url='https://try.miraclebrand.co/up/v6/2c?upsell=true'>
-			Yes, Upgrade My Order with 1-Click-buy!
+		<a href="#" class="checkout-accept-upsell button---yes-upsell cta-button" data-upsell-type="upgrade-variant" data-upsell-param1="39767106650262" data-next-url='/up/v6/2c?upsell=true'>
+			Yes, Add To My Order with 1-Click-buy!
 		</a>
 
 		<a href="/up/v6/2c" class="link">No, thank you! I don’t want to get this one-time-only offer.</a>

@@ -75,6 +75,10 @@
 						<p>King</p>
 					</label>
 					<label class="selection">
+						<input type="radio" name="size" value="split_king">
+						<p>Split King</p>
+					</label>
+					<label class="selection">
 						<input type="radio" name="size" value="cali_king">
 						<p>Cali King</p>
 					</label>

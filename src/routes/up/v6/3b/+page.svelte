@@ -45,23 +45,10 @@
             <p>10,078+ FIVE-STAR COMPANY REVIEWS</p>
         </div>
 
-        <div class="callout-box">
-            <img
-                src="/assets/images/icons/hourglass.svg"
-                alt="Limited Time Offer - Miracle Made"
-            />
-
-            <p>
-                <strong class="uppercase"
-                    >One-time Offer – Only available with this current order.</strong
-                ><span> You will never see this again.</span>
-            </p>
-        </div>
-
         <p class="upsell-description font-bg">
-            Our Premium pillowcases are also infused with silver to prevent <strong>up to 99.7% of bacterial growth,</strong> designed to support your skin and hair health. So you can stop resting your face on filth.
+            Our premium pillowcases are infused with silver to help prevent up to 99.7% of bacterial growth, keeping your bedding cleaner for longer. Say goodbye to bacteria build-up and rest easy on pillowcases that stay fresh and inviting—night after night.
         </p>
-
+        
         <ul>
             <li>
                 <div class="icon-holder">
@@ -73,7 +60,7 @@
                 <div class="icon-holder">
                     <img src="/assets/images/icons/tick.svg" alt="Upsell - Miracle Made">
                 </div>
-                <p class="font-description-bg">Less bacteria. Designed for clear skin.</p>
+                <p class="font-description-bg">Designed for a Cleaner Sleep</p>
             </li>
             <li>
                 <div class="icon-holder">
@@ -197,27 +184,16 @@
             </div>
         </div>
 
-        <a
-            href="#"
-            class="checkout-accept-upsell button---yes-upsell cta-button"
-            data-upsell-type="upgrade-variant"
-            data-upsell-param1="39509018149014"
-            data-next-url="https://try.miraclebrand.co/up/v6/5b?upsell=true"
-        >
+        <a href="#" class="checkout-accept-upsell button---yes-upsell cta-button" data-upsell-type="upgrade-variant" data-upsell-param1="39509018149014" data-next-url="/up/v6/6b?upsell=true">
             Yes, Upgrade My Order with 1-Click-buy!
         </a>
 
-        <a href="/up/v6/5b" class="link"
-            >No, thank you! I don’t want to get this one-time-only offer.</a
-        >
+        <a href="/up/v6/6b" class="link">No, thank you! I don’t want to get this one-time-only offer.</a>
 
         <hr />
 
         <div class="money-back-text">
-            <img
-                src="/assets/images/icons/30-day-guarantee.svg"
-                alt="30-day money back guarantee - Miracle Made"
-            />
+            <img src="/assets/images/icons/30-day-guarantee.svg" alt="30-day money back guarantee - Miracle Made" />
 
             <p>30 day money-back guarantee</p>
         </div>

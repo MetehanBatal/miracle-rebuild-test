@@ -82,7 +82,7 @@
 		</div>
 
 		<p class="upsell-description">
-			Almost all of our customers eventually upgrade to the Extra Luxe sheets because they are truly irresistable! Now you can take advantage of the Extra Luxe sheets for <strong>only $50 per set.</strong>
+			Tens of thousands of our customers eventually upgrade to the Extra Luxe sheets because they are truly irresistible! Now you can take advantage of the Extra Luxe sheets for <strong>only $50 per set.</strong>
 		</p>
 
 		<ul> 
@@ -90,33 +90,25 @@
 				<div class="icon-holder">
 					<img src="/assets/images/icons/tick.svg" alt="Upsell - Miracle Made">
 				</div>
-				<p>Premium Miracle Clean & Cool™ Fabrics</p>
+				<p><strong>COOLIT™ technology</strong> helps keep you up to an extra 3.6°F cooler for optimal sleep</p>
 			</li>
 			<li>
 				<div class="icon-holder">
 					<img src="/assets/images/icons/tick.svg" alt="Upsell - Miracle Made">
 				</div>
-				<p>Enhanced High Thread Count Sateen Weave</p>
+				<p><strong>Patented True Grip® technology</strong> ensures an extra snug fit to keep your fitted sheet in place</p>
 			</li>
 			<li>
 				<div class="icon-holder">
 					<img src="/assets/images/icons/tick.svg" alt="Upsell - Miracle Made">
 				</div>
-				<p>Additional Silver Infused Protection</p>
-			</li>
-			<li>
-				<div class="stardust-wrapper">
-					<img src="/assets/images/icons/stardust.svg" alt="Upsell - Miracle Made">
-				</div>
-				<div class="text-wrapper">
-					<p><span class="font-bold">BONUS:</span> Exclusive access to 20% OFF future purchases <br class="mobile-hidden"> including luxury sheets, towels, and hundreds of gift items <br class="mobile-hidden"> for 1 year</p>
-				</div>
+				<p>Also made with <strong>Miracle Clean & Cool™</strong>: Our Premium Eucalyptus Blend with Sateen Weave</p>
 			</li>
 		</ul>
 
 		<div class="price-container">
 			<div>
-				<h4 class="price"><span class="non-usa">{usdPrefix}</span>$50*</h4>
+				<h4 class="price"><span class="non-usa">{usdPrefix} </span>$50*</h4>
 				<p><strong>Per Upgrade</strong></p>
 			</div>
 
@@ -130,7 +122,7 @@
 		</div>
 
 		<a href="#" class="checkout-accept-upsell button---yes-upsell cta-button" data-upsell-type="upgrade-variant" data-upsell-param1="39767106617494" data-next-url='/up/v6/2d?upsell=true'>
-			Yes, Upgrade My Order with 1-Click-buy!
+			Yes, Add To My Order with 1-Click-buy!
 		</a>
 
 		<a href="/up/v6/1b-v2" class="link">No, thank you! I don’t want to get this one-time-only offer.</a>
