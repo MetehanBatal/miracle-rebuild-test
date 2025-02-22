@@ -4,8 +4,6 @@
 	import lozad from 'lozad';
 	import KeenSlider from 'keen-slider';
 
-	import { purchaseLog } from '../../stores/purchaseLog';
-
 	export let imageCount;
 	export let slug;
 	export let hasVideo;
@@ -68,11 +66,11 @@
 		{#each Array(imageCount) as image, index}
 		{#if index !== 0}
 		<div class="slide keen-slider__slide">
-			<img class="lozad" data-src={`/assets/images/upsells/sliders/${slug}/${$purchaseLog.purchase?.[0]?.selectedColor || 'stone'}/${index + 1}.webp`} alt="Miracle Made - Sheets" />
+			<img class="lozad" data-src={`/assets/images/upsells/sliders/${slug}/stone/${index + 1}.webp`} alt="Miracle Made - Sheets" />
 		</div>
 		{:else}
 		<div class="slide keen-slider__slide">
-			<img src={`/assets/images/upsells/sliders/${slug}/${$purchaseLog.purchase?.[0]?.selectedColor || 'stone'}/${index + 1}.webp`} alt="Miracle Made - Sheets" />
+			<img src={`/assets/images/upsells/sliders/${slug}/stone/${index + 1}.webp`} alt="Miracle Made - Sheets" />
 		</div>
 		{/if}
 		{/each}
@@ -80,7 +78,7 @@
 
 	<div class="thumbnails">
 		{#each Array(imageCount) as image, index}
-		<img width="50" height="50" class="thumbnail pagination-indicator" class:active={currentActiveThumb === index} on:click={(e) => {handleThumbnailClick(e, index)}} src={`/assets/images/upsells/sliders/${slug}/${$purchaseLog.purchase?.[0]?.selectedColor || 'stone'}/${index + 1}_thumb.webp`} alt="Miracle Made - Sheets">
+		<img width="50" height="50" class="thumbnail pagination-indicator" class:active={currentActiveThumb === index} on:click={(e) => {handleThumbnailClick(e, index)}} src={`/assets/images/upsells/sliders/${slug}/stone/${index + 1}_thumb.webp`} alt="Miracle Made - Sheets">
 		{/each}
 	</div>
 

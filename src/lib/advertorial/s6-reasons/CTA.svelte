@@ -1,10 +1,9 @@
 <script>
-	import lozad from 'lozad';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import { preloadData } from '$app/navigation';
 
-	import { remainingTime } from '../../../stores/functions';
+	import { remainingTime } from '../../../stores/toolkit/functions';
 
 	export let data;
 
@@ -20,11 +19,6 @@
 
 	onMount(() => {
 		if (browser) {
-			const observer = lozad('.lozad', {
-				rootMargin: '400px 0px'
-			});
-			observer.observe();
-
 			const sectionObserver = new IntersectionObserver(onSectionVisible, { root: null, rootMargin: '0px 0px' });
 			sectionObserver.observe(ctaSection);
 		}
@@ -38,7 +32,7 @@
 		<div class="cta-description">
 			<h3>{@html data.heading}</h3>
 
-			<p class="cta-text">{data.text}</p>
+			<p class="cta-text">{@html data.text}</p>
 
 			<a href='/sheets/ksp' class="cta-button">
 				<img width="22" height="22" src="/assets/images/icons/tick_n.png" alt="Try Miracle Made Now">
@@ -46,14 +40,12 @@
 			</a>
 
 			<div class="countdown-box">
-				<span>Deal ending in:</span>
+				<span>Deal Ending in:</span>
 				<p class="countdown-timer">{ $remainingTime }</p>
 			</div>
 
 			<div class="callout-box">
 				<div>
-					<!-- <img data-src="https://try.miraclebrand.co/svelte/assets/icons/sell-out.svg" class="lozad mobile-hidden" alt="Miracle Made - High Sell Out Risk"> -->
-
 					<p>Sell-Out Risk: </p><strong class="color-red">High</strong>
 				</div>
 				
@@ -69,7 +61,7 @@
 						</g>
 					</svg>
 
-					<p><strong>FREE</strong> shipping</p>
+					<p>FREE SHIPPING</p>
 				</div>
 			</div>
 		</div>
@@ -94,7 +86,7 @@
 		position: relative;
 
 		background-color: var(--main-color);
-		padding: 36px 32px;
+		padding: 4.8rem 2rem 6rem;
 
 		cursor: default;
 
@@ -123,7 +115,7 @@
 
 		max-width: 1000px;
 
-		padding: 32px 24px;
+		padding: 2.8rem 1.4rem;
 
 		border-radius: 15px;
 		box-shadow: 1px 0 20px -3px rgba( 0, 0, 0, .48 );
@@ -137,9 +129,8 @@
 	h3 {
 		font-family: 'Montserrat', sans-serif;
 		font-weight: 600;
-		font-size: 26px;
-		line-height: 1.1;
-		letter-spacing: -0.054px;
+		font-size: 1.9rem;
+		line-height: 2.8rem;
 		text-transform: uppercase;
 		color: #00237e;
 	
@@ -147,24 +138,29 @@
 		margin-bottom: 18px;
 	}
 
-	strong {
+	:global(h3 strong) {
 		font-weight: 900;
 	}
 
 	.cta-text {
-		font-size: 13px;
+		font-family: 'Montserrat', sans-serif;
+		font-size: 1.5rem;
+
+		margin-bottom: 2rem;
 	}
 
 	.cta-button {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		gap: 15px;
+		gap: 1.7rem;
 
-		font-size: 22px;
+		font-family: 'Montserrat', sans-serif;
 		font-weight: 700;
+		font-size: 1.7rem;
+		line-height: 2.3rem;
 
-		padding: 15px 12px;
+		padding: 1.5rem 1.2rem;
 
 		background: linear-gradient(180deg, #85bb01, #19973d);
 		color: #fff;
@@ -172,7 +168,7 @@
 		border-style: solid;
 		border-width: 2px;
 		border-color: #19973d;
-		border-radius: 10px;
+		border-radius: 1rem;
 		background-color: #206b2e;
 
 		text-decoration: none;
@@ -185,32 +181,35 @@
 		flex-direction: column;
 		align-items: center;
 
-		margin-top: 20px;
+		margin-top: 2rem;
 	}
 
 	.countdown-box span {
-		font-weight: 400;
-		font-size: 19px;
-		letter-spacing: 1px;
+		font-size: 1.8rem;
+		line-height: 2rem;
+		letter-spacing: .1rem;
+		color: #00237e;
 	
-		margin-bottom: 2px;
+		margin-bottom: .6rem;
 	}
 
 	.countdown-timer {
-		font-size: 36px;
+		font-size: 4rem;
+		font-weight: 500;
 		line-height: 1;
 	}
 
 	.callout-box {
 		display: flex;
-		grid-gap: 10px;
-		justify-content: space-between;
+		grid-gap: 1rem;
+		justify-content: space-around;
 		align-items: center;
 
-		padding: 10px;
+		padding: .7rem 1rem;
 
-		margin-top: 10px;
-	
+		margin-top: .8rem;
+		
+		border-radius: 1rem;
 		background-color: var(--callout-bg-color);
 	}
 
@@ -218,6 +217,10 @@
 		display: flex;
 		align-items: center;
 		grid-gap: 3px;
+	}
+
+	.callout-box p {
+		font-family: 'Montserrat', sans-serif;
 		font-size: 14px;
 	}
 
@@ -239,6 +242,8 @@
 	}
 
 	.color-red {
+		font-family: 'Montserrat', sans-serif;
+		font-size: 1.6rem;
 		color: #ec2222;
 		font-weight: 800;
 	}
@@ -252,16 +257,27 @@
 			display: block;
 		}
 
-		p,
-		.callout-box div {
-			font-size: 16px;
+		h3 {
+			font-size: 2.6rem;
+			line-height: 3.4rem;
 		}
+
+		p {
+			font-size: 1.6rem;
+		}
+
+		.callout-box p,
+		.color-red {
+			font-size: 1.7rem;
+		}
+
 		.cta-box {
 			grid-template-columns: 2fr 3fr;
+			padding: 2.6rem 2.4rem;
 		}
 
 		.cta-section {
-			padding: 60px 32px;
+			padding: 6rem 3.2rem;
 		}
 
 		.cta-description {
@@ -269,14 +285,12 @@
 			flex-direction: column;
 			justify-content: center;
 		
-			padding: 28px;
+			padding: 0 1rem;
 		}
 
 		.cta-text {
-			font-size: 18px;
-			font-weight: 400;
-
-			margin-bottom: 20px;
+			font-size: 1.6rem;
+			line-height: 2.2rem;
 		}
 
 		.callout-box {
@@ -284,12 +298,15 @@
 			justify-content: center;
 		}
 
-		.cta-button {
-			padding: 21px 12px;
+		.countdown-box span {
+			font-size: 1.9rem;
+			line-height: 2.3rem;
 		}
-	}
 
-	.shipping-icon img > path {
-		fill: rgb(0, 26, 11)
+		.cta-button {
+			font-size: 2.2rem;
+			line-height: 1.5rem;
+			padding: 1.8rem 1.2rem;
+		}
 	}
 </style>

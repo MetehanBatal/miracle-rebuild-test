@@ -1,78 +1,16 @@
 <script>
-	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { browser } from '$app/environment';
 	
-	import { remainingTime } from '../../stores/functions';
+	import { remainingTime } from '../../stores/toolkit/functions';
 
 	export let bannerData;
 	export let bannerAttributes;
-
-	// let topBanner = bannerData?.find((item) => item.component === 'TopBanner');
-	// let bottomBanner = bannerData?.find((item) => item.component === 'BottomBanner');
-	// let podcastBanner = bannerData?.find((item) => item.component === 'PodcastBanner');
-
-	// function setBannerData() {
-	// 	topBanner = bannerData?.find((item) => item.component === 'TopBanner');
-	// 	bottomBanner = bannerData?.find((item) => item.component === 'BottomBanner');
-	// 	podcastBanner = bannerData?.find((item) => item.component === 'PodcastBanner');
-	// }
-
-	// setBannerData();
-
-	// console.log('Top Banner Data: ', topBanner);
-	// console.log('--------');
-	// console.log('Bottom Banner Data: ', bottomBanner);
-	// console.log('--------');
-	// console.log('Podcast Banner Data: ', podcastBanner);
-
-	// let discountCode = topBanner?.data?.discountCode || '';
-
-	// if ($page.route.id.includes('ksp') && browser) {
-	// 	document.body.classList.add('ksp'); }
-
-	onMount(() => {
-		// alterElements();
-	});
-
-	// function alterElements() {
-	// 	if (devAttributes.element.length > 1) {
-	// 		// console.log('attribute changed: ', devAttributes);
-	// 		if (devAttributes.element === 'TopBanner') {
-	// 			if (!topBanner) { return; }
-	// 			topBanner.data.backgroundColor = devAttributes.bannerStyling;
-	// 			topBanner.data.timer = devAttributes.hasTimer;
-	// 			topBanner.data.discountCode = devAttributes.discountCode;
-	// 			topBanner.data.content = devAttributes.content;
-
-	// 			topBanner.data = topBanner.data;
-	// 		} else if (devAttributes.element === 'BottomBanner') {
-	// 			if (!bottomBanner) { return; }
-				
-	// 			bottomBanner.data.backgroundColor = devAttributes.bannerStyling;
-	// 			bottomBanner.data.timer = devAttributes.hasTimer;
-	// 			bottomBanner.data.discountCode = devAttributes.discountCode;
-	// 		} else {
-	// 			if (!podcastBanner) { return; }
-				
-	// 			podcastBanner.data.backgroundColor = devAttributes.bannerStyling;
-	// 			podcastBanner.data.timer = devAttributes.hasTimer;
-	// 			podcastBanner.data.discountCode = devAttributes.discountCode;
-	// 		}
-	// 	}
-	// }
-
-	// $: devAttributes, alterElements();
-
-	// $: bannerData, setBannerData();
 </script>
 
 <!-- START - Banners -->
-<!-- {#if topBanner} -->
-<div class="banner top-banner" data-cmp-id="TopBanner" style={`background-color: ${bannerAttributes.stylingData}`}>
+<div class="banner top-banner" style={`background-color: ${bannerAttributes.stylingData}`}>
 	<div class="banner-container">
 		<div class="banner-text-holder">
-			<!-- {@html topBanner.data.content} -->
 			{@html bannerAttributes.content}
 		</div>
 
@@ -88,29 +26,16 @@
 		{/if} -->
 	</div>
 </div>
-<!-- {/if} -->
 
-{#if $page.data.pageId === '8h719c66-a1e6-ag1e-g69dhe59cd88' || $page.url.pathname.includes('sheets')}
-<div class="banner bottom-banner" data-cmp-id="BottomBanner" style={`background-color: #000`}>
+{#if $page.url.pathname.includes('/sheets/')}
+<div class="banner bottom-banner" style={`background-color: #000`}>
 	<div class="banner-container">
 		<div class="banner-text-holder">
-			<!-- {@html bottomBanner?.data?.content} <span>{@html bottomBanner?.data?.discountCode}</span> -->
-
 			{@html bannerData}
 		</div>
 	</div>
 </div>
 {/if}
-
-<!-- {#if podcastBanner}
-<div class="banner bottom-banner" data-cmp-id="PodcastBanner" style={`background-color: ${podcastBanner?.data?.backgroundColor}`}>
-	<div class="banner-container">
-		<div class="banner-text-holder">
-			{@html podcastBanner?.data?.content} <span>{@html podcastBanner?.data?.discountCode}</span>
-		</div>
-	</div>
-</div>
-{/if} -->
 <!-- END - Banners -->
 
 <style>
@@ -129,13 +54,10 @@
 		margin-right: 2px;
 	}
 	:global(.banner-text-holder p ){
-		font-family: "Brandon" !important;
+		font-family: "Montserrat", sans-serif !important;
 	}
 	:global(.banner-text-holder strong ){
-		font-family: "Brandon" !important;
-	}
-
-	strong {
+		font-family: "Montserrat", sans-serif !important;
 		margin-left: 2px;
 	}
 
@@ -159,6 +81,8 @@
 		top:0;
 		
 		background-color: #dcff8e;
+		font-family: 'Montserrat', sans-serif;
+
 		
 		color: #000;
 	}
@@ -181,7 +105,8 @@
 	.banner-container{
 		display:flex;
 		justify-content:center;
-		align-items:center
+		align-items:center;
+		gap: 1.5rem;
 	}
 
 	:global(.banner-text-holder p){

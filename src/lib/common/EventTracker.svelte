@@ -2,7 +2,7 @@
     import { onMount } from 'svelte';
     import { page } from '$app/stores';
 
-    import { logEvent } from '../../stores/functions';
+    import { logEvent } from '../../stores/toolkit/functions';
   
     /** @type {Array<{
       eventId: string,

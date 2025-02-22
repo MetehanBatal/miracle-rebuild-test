@@ -10,7 +10,7 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import lozad from 'lozad';
-	import { sheetVariants } from '../../stores/variants/sheet';
+	import { sheetVariants } from '../../stores/static/products/sheets';
 	// import 'keen-slider/keen-slider.min.css'
 	import KeenSlider from 'keen-slider';
 
@@ -118,64 +118,6 @@
 			}
 		})
 		document.body.addEventListener("click", closeDropdown);
-
-		if ($page.data.journeyMode) {
-			window.addEventListener('message', function(event) {
-				if (event.origin !== 'https://miracle.mtrix.io' && event.origin !== 'https://preview-miracle.mtrix.io' && event.origin !== 'http://localhost:5173') {
-					return; }
-
-				if (event.data?.sessionDetails) {
-					console.log('From ATC: ', event.data.sessionDetails);
-					landerExperiment = event.data?.sessionDetails.variantIndices.find(indice => indice['experimentId'] === 350095693703);
-					
-					selectedColor = landerExperiment.variants.find((v) => v.name === 'Colors')?.component;
-					selectedColorIndex = selectedColor === 'WhiteColor' ? 1 :
-								  selectedColor === 'SkyBlueColor' ? 2 :
-								  selectedColor === 'NavyBlueColor' ? 3 :
-								  selectedColor === 'SandColor' ? 4 :
-								  selectedColor === 'SageColor' ? 5 :
-								  selectedColor === 'TerracottaColor' ? 6 :
-								  selectedColor === 'CharcoalColor' ? 7 :
-								  0;
-
-					colors = {
-						stone: 7,
-						white: 7,
-						sky_blue: 6,
-						navy_blue: 5,
-						sand : 5,
-						sage : 6,
-						terracotta: 7,
-						charcoal : 6,
-					};
-
-					colorArray = Object.entries(colors);
-					
-					// Use the known itemIndex to remove the item from the array
-					let [ removedItem ] = colorArray.splice(selectedColorIndex, 1);
-
-					// Insert the removed item at the desired index
-					colorArray.unshift(removedItem);
-
-					// Convert the array back into an object
-					updatedColors = Object.fromEntries(colorArray);
-					colors = updatedColors;
-					color = Object.keys(colors)[0];
-					
-					freeGiftVisible = landerExperiment.variants.find((v) => v.name === 'Free Gift')?.component === 'On';
-					selectedHeadlineIndex = landerExperiment.variants?.find((v) => v.name === 'Headline Copy')?.component === 'HeadlineII' ? 1 : 0;
-					selectedHeadline = headlines[selectedHeadlineIndex];
-
-					console.log('landerExperiment: ', landerExperiment);
-					console.log('selectedColor: ', selectedColor);
-					console.log('selectedColorIndex: ', selectedColorIndex);
-					console.log('freeGiftVisible: ', freeGiftVisible);
-					console.log('selectedHeadlineIndex: ', selectedHeadlineIndex);
-					console.log('selectedHeadline: ', selectedHeadline);
-				}
-				
-			})
-		}
 	});
 
 	onDestroy(() => {
@@ -282,7 +224,7 @@
 			window.checkout.apiClient.setVariantQuantities(cartObject).then(x => {
 				window.checkout.setCart(x);
 				window.checkout.drawCart(x);
-				goto('/checkout/secure');
+				goto('/sheets/checkout/');
 				// setTimeout(() => {goto('/checkout')}, 8000);
 			});
 		});

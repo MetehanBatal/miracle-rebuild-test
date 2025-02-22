@@ -167,7 +167,7 @@
 
         freezeStuff();
         window.addEventListener('message', function(event) {
-			if (event.origin !== 'https://miracle.mtrix.io' && event.origin !== 'https://preview-miracle.mtrix.io' && event.origin !== 'http://localhost:5173') {
+			if (event.origin !== 'https://miracle.mtrix.io' && event.origin !== 'https://preview-miracle.mtrix.io' && event.origin !== 'https://nova-development.vercel.app' && event.origin !== 'http://localhost:5173') {
 				return; }
             
             if (event.data?.action) {

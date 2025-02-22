@@ -1,5 +1,5 @@
 <script>
-	import Navbar from '$lib/shared/Navbar.svelte';
+	import Navbar from '$lib/advertorial/s6-reasons/Navbar.svelte';
 	import Footer from '$lib/advertorial/s6-reasons/Footer.svelte';
 </script>
 

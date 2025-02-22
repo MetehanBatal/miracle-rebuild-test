@@ -18,9 +18,74 @@
 				document.write('<scr' + 'ipt>eruda.init({tool: ["console", "network", "resources"]});</scr' + 'ipt>');
 			})();
 		</script>
+
+		<script>
+			var head = document.head;
+			var script = document.createElement('script');
+			script.type = 'text/javascript';
+			script.src = "https://t.miraclebrand.co/v1/lst/universal-script?ph=f635c7a6a1fa8bdf05277a5a7599afc05bc3b585d3f7260daf42c511450d0801&tag=!clicked";
+			head.appendChild(script);
+		</script>
+
+		<script>
+			(function (a, t, o, m, i) {
+				a[m] = a[m] || [];
+				a[m].push({
+					t: new Date().getTime(),
+					event: 'snippetRun'
+				});
+
+				var f = t.getElementsByTagName(o)[0],
+					e = t.createElement(o);
+				e.async = !0;
+				e.dataset.namespace = "paypal_sdk";
+				e.src = 'https://www.paypal.com/sdk/js?components=shopping&client-id=' + i;
+				f.parentNode.insertBefore(e, f);
+			})(window, document, 'script', 'shoppingDDL', 'AUvZCmTImA-03Jrtr4x_ZdRAnJIL5wFVUC5_eenqw8Ynfecok5HhftLx3-ViQ-QWvmBrGyHICNnoFJrm');
+
+			var pptag = {
+				send: function (e, p) {
+					shoppingDDL.push({
+						event: e,
+						payload: p
+					});
+				},
+				set: function (s) {
+					shoppingDDL.push({
+						set: s
+					});
+				}
+			};
+		</script>
+
+		<script>
+			window.addEventListener("load", () => {    
+				(function (d) {
+				var s = d.createElement("script");		
+				s.setAttribute("data-position", 7); 		
+				s.setAttribute("data-size", "small");
+				s.setAttribute("data-color", "#FFF");
+				s.setAttribute("data-account", "YtBxI18gI8");
+				s.setAttribute("src", "https://cdn.userway.org/widget.js");
+				s.async = true;
+				(d.body || d.head).appendChild(s);
+				})(document);
+				const checkInterval = setInterval(() => {
+						const icon = document.getElementById("userwayAccessibilityIcon");
+						if (icon) {
+							icon.style.background = "transparent";
+							clearInterval(checkInterval);
+						}
+				}, 100);
+
+				setTimeout(() => clearInterval(checkInterval), 10000);
+			});
+		</script>
 	</head>
 	<body>
 		<div style="display: contents" class="body-wrapper">%sveltekit.body%</div>
+
+		<script type="text/javascript" src="https://app.termly.io/resource-blocker/5d816350-26fa-43d8-987c-fa403ed2cbc6?autoBlock=on"></script>
 	</body>
 
 <!-- 	<script src="https://cdn.shopmiraclebrand.co/js/cart_loader.js" async defer></script>

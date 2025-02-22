@@ -1,6 +1,6 @@
 <script>
 import { page } from '$app/stores';
-import { findVariant } from '$lib/../stores/functions';
+import { findVariant } from '$lib/../stores/toolkit/functions';
 export let defaultVariantId;
 const componentId = 'c-889a118d-813h-agd1-ec016d2h6h20';
 const variants = [];

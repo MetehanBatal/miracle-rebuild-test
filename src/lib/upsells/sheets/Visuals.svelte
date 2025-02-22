@@ -4,7 +4,7 @@
 	import lozad from 'lozad';
 	import KeenSlider from 'keen-slider';
 
-	import { purchaseLog } from '../../../stores/purchaseLog';
+	import { purchaseLog } from '../../../stores/writables/purchaseLog';
 
 	export let hasSlider;
 	export let imageCount;

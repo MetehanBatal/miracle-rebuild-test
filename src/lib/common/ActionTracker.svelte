@@ -13,7 +13,7 @@
 		handleMousemove,
 	} from '../../stores/tracker';*/
 
-	import { logAction } from '../../stores/functions';
+	import { logAction } from '../../stores/toolkit/functions';
 
 	export let innerWidth;
 	export let innerHeight;

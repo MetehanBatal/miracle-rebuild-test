@@ -10,17 +10,15 @@ const SizeGuide = import ('$lib/sheets/SizeGuide.svelte');
 const FAQSection = import ('$lib/shared/FAQSection.svelte');
 const ATCBanner = import ('$lib/sheets/ATCBanner.svelte');
 
-import {sheetFAQs} from '../../../stores/faqs/sheets';
-import {reviews} from '../../../stores/reviews';
+import {sheetFAQs} from '../../../stores/static/faqs/sheets';
+import {reviews} from '../../../stores/static/reviews/sheets';
 
-import { sessionAnalytics } from '../../../stores/session.js';
 
 export let data;
 
 let pageCrumbs = data.pageCrumbs;
 let sizeGuideOpened = false;
 
-$sessionAnalytics.landingPageName = pageCrumbs.pageName;
 
 let title = 'Miracle Made® Sheets | Miracle Made';
 let blurArray = [

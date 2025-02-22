@@ -450,7 +450,7 @@ footer a:hover {
 
 		background-color: #fffef2;
 
-		padding-left: 8rem;
+		padding-left: 4.6rem;
 		padding-right: 2.4rem;
 
 		border-left: 0.1rem solid #000000;

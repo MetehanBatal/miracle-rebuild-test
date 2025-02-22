@@ -9,7 +9,7 @@
 /* START - Fonts */
 @font-face {
 	font-family: "Brandon";
-	src: url("/assets/fonts/Brandon/Brandon_bld.woff2");
+	src: url("/assets/fonts/Brandon/Bold.woff2");
 	font-weight: 700;
 	font-style: bold;
 	font-display: swap;
@@ -17,7 +17,7 @@
 
 @font-face {
 	font-family: "Brandon";
-	src: url("/assets/fonts/Brandon/Brandon_med.woff2");
+	src: url("/assets/fonts/Brandon/Medium.woff2");
 	font-weight: 500;
 	font-style: medium;
 	font-display: swap;
@@ -25,9 +25,16 @@
 
 @font-face {
 	font-family: "Brandon";
-	src: url("/assets/fonts/Brandon/Brandon_reg.woff2");
+	src: url("/assets/fonts/Brandon/Regular.woff2");
 	font-weight: 400;
 	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Montserrat";
+	src: url("/assets/fonts/Montserrat/Variable.woff2") format('woff2-variations');
+	font-weight: 400 900;
 	font-display: swap;
 }
 

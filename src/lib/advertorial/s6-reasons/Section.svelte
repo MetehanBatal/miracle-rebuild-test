@@ -16,13 +16,23 @@
 </div>
 
 <style>
+	@font-face {
+		font-family: "PTSans";
+		src: url("/assets/fonts/PTSans/Regular.woff2");
+		font-weight: 400;
+		font-style: normal;
+		font-display: swap;
+	}
+
 	img {
 		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 
 	p {
-		font-size: 16px;
-		line-height: 1.5;
+		font-size: 1.6rem;
+		line-height: 2.4rem;
 		color: #d3d3d3;
 	}
 	
@@ -52,6 +62,10 @@
 		line-height: 80px;
 	}
 
+	:global(.section-description a) {
+		color: #0000ee;
+	}
+
 	img {
 		width: 100%;
 	}
@@ -59,19 +73,19 @@
 	h2 {
 		font-family: "Brandon", sans-serif;
 		font-weight: 700;
-		font-size: 32px;
-		line-height: 1.2;
-		letter-spacing: -0.054px;
-		margin-bottom: 28px;
+		font-size: 2.6rem;
+		line-height: 3.4rem;
+		margin-bottom: 4rem;
+		margin-left: 1.4rem;
 		text-align: left;
 	}
 
 	.section-description {
-		padding: 32px;
+		padding: 4rem 2rem 5.4rem;
 	}
 
 	.section-description p {
-		font-weight: 400 !important;
+		font-family: 'PTSans';
 	}
 
 	.max-w-500 {
@@ -80,11 +94,8 @@
 
 	@media screen and (min-width: 768px) {
 		h2 {
-			font-size: 36px;
-		}
-
-		p {
-			font-size: 18px;
+			font-size: 3.1rem;
+			line-height: 3.6rem;
 		}
 
 		.section {
@@ -99,7 +110,7 @@
 			display: flex;
 			justify-content: center;
 
-			padding: 32px 60px;
+			padding: 3.2rem 7.8rem;
 		}
 	}
 </style>

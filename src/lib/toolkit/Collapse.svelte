@@ -1,9 +1,19 @@
 <script>
+  import { onMount } from "svelte";
+
     export let question;
     export let answer;
+
+    let faqQuestion;
+
+    onMount(() => {
+        question = faqQuestion.parentNode.getAttribute('question');
+        answer = faqQuestion.parentNode.getAttribute('answer');
+        console.log(faqQuestion.parent, faqQuestion.parentNode)
+    })
 </script>
 
-<details class="faq-question">
+<details bind:this={faqQuestion} class="faq-question">
     <summary>
         <p>{question || 'Lorem ipsum'}</p>
 

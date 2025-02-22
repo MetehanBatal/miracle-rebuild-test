@@ -1,7 +1,7 @@
 <script>
-	import { remainingTime } from '../../../stores/functions';
-	import { purchaseLog } from '../../../stores/purchaseLog.js';
-	import { sessionAnalytics } from '../../../stores/session.js';
+	import { remainingTime } from '../../../stores/toolkit/functions';
+	import { purchaseLog } from '../../../stores/writables/purchaseLog';
+	import { sessionAnalytics } from '../../../stores/writables/sessionAnalytics';
 	import { onMount } from 'svelte';
 
 	let toggled = false;	
@@ -327,7 +327,7 @@
 						</div>
 					</div>
 				</div>
-				<p class="legal-term">By clicking the <span>"Complete Purchase"</span> button, you hereby agree to and accept Miracle Made® LLC's <a target="_blank" href="https://www.miraclebrand.co/pages/privacy-policy">Privacy Policy</a> and <a target="_blank" href="https://www.miraclebrand.co/pages/terms-and-conditions">Terms of Use</a></p>
+				<p class="legal-term">By clicking the <span>"Complete Purchase"</span> button, you hereby agree to and accept Pattern Brands LLC's <a target="_blank" href="https://www.miraclebrand.co/pages/privacy-policy">Privacy Policy</a> and <a target="_blank" href="https://www.miraclebrand.co/pages/terms-and-conditions">Terms of Use</a></p>
 				<a href="#" class="checkout-submit-combo">
 					<div class="loader-wrapper">
 						<div class="loader"></div>

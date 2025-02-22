@@ -5,7 +5,11 @@
 
     import Banners from '$lib/banners/SheetBanner.svelte';
 
+    const lComponents = import.meta.glob('/src/lib/**/*.svelte');
+
     export let data;
+
+    let endpoint = data.isDev ? 'http://localhost:5173/' : 'https://nova-development.vercel.app';
 
     let initialized = false;
 
@@ -188,7 +192,7 @@
                 offsetLeft
             }
         };
-        window.parent.postMessage(hoverSchema, 'http://localhost:5173/');
+        window.parent.postMessage(hoverSchema, endpoint);
     }
 
     function handleMouseOut(e, _id) {
@@ -197,7 +201,7 @@
         const hoverSchema = {
             action: 'elementHoverOut'
         };
-        window.parent.postMessage(hoverSchema, 'http://localhost:5173/');
+        window.parent.postMessage(hoverSchema, endpoint);
     }
 
     function handleClick(e, _id, type) {
@@ -229,7 +233,7 @@
         if (type === 'noEvent') {
             clickSchema.mirroring = true; }
 
-        window.parent.postMessage(clickSchema, 'http://localhost:5173/');
+        window.parent.postMessage(clickSchema, endpoint);
     }
 
     function handleDoubleClick(e, _id) {
@@ -277,7 +281,7 @@
                     mirroring: true
                 };
 
-                window.parent.postMessage(clickSchema, 'http://localhost:5173/');
+                window.parent.postMessage(clickSchema, endpoint);
             };
 
             let selectionTimeout;
@@ -297,7 +301,7 @@
                 //             offsetTop: 0,
                 //             offsetLeft: 0
                 //         }
-                //     }, 'http://localhost:5173/');
+                //     }, endpoint);
                 //     return;
                 // }
 
@@ -313,7 +317,7 @@
                             offsetLeft: rect.left
                         }
                     };
-                    window.parent.postMessage(selectionSchema, 'http://localhost:5173/');
+                    window.parent.postMessage(selectionSchema, endpoint);
                 }
             }
 
@@ -415,7 +419,7 @@
                         offsetTop: 0,
                         offsetLeft: 0
                     }
-                }, 'http://localhost:5173/');
+                }, endpoint);
                 
                 if (editedContent === currentContent) {
                     return;
@@ -428,7 +432,7 @@
                         content: editedContent
                     }
                 };
-                window.parent.postMessage(clickSchema, 'http://localhost:5173/');
+                window.parent.postMessage(clickSchema, endpoint);
             };
 
             // Add event listeners
@@ -521,6 +525,7 @@
     }
 
     function handleOrderChange(instanceId, parentId, order) {
+        console.log(instanceId, parentId, order);
         const elementToMove = document.querySelector(`[mtrix-instance-id="${instanceId}"]`);
         const parentElement = document.querySelector(`[mtrix-instance-id="${parentId}"]`);
         
@@ -564,18 +569,26 @@
     async function loadComponents() {
         for (const comp of data.components) {
             if (comp.type === 'custom') {
-                return; }
+                return;
+            }
+
             try {
-                const module = await import(comp.path);
+                // Convert database path to proper import path
+                // const importPath = dev ? comp.path.replace('@components/', '/src/') : comp.path;
+                console.log(lComponents, comp)
+                const importer = lComponents[comp.path];
+                if (!importer) {
+                    console.error(`No component found at ${comp.path}`);
+                    return;
+                }
+
+                const module = (await importer());
                 const targetElement = document.querySelector(`[mtrix-component-id="${comp.componentId}"]`);
                 
                 if (targetElement && module.default) {
-                    // Create a new instance of the component
                     new module.default({
                         target: targetElement,
-                        props: {
-                            // Add any props you need to pass
-                        }
+                        props: {}
                     });
                 }
             } catch (error) {
@@ -614,6 +627,8 @@
                     return;
                 }
 
+                endpoint = message.origin;
+
                 if (message.data && message.data.action) {
                     if (message.data.action === 'initialization') {
                         pageContent = '';
@@ -645,7 +660,7 @@
                         initCount += 1;
 
                         if (dPage.pageId === 'component') {
-                            window.parent.postMessage({action: 'heightChanged', data: {height: document.body.scrollHeight}}, 'http://localhost:5173/'); }
+                            window.parent.postMessage({action: 'heightChanged', data: {height: document.body.scrollHeight}}, endpoint); }
                         // setupEventDelegation(); // Uncomment to use event delegation instead
                     }
 
@@ -663,7 +678,7 @@
                         initCount += 1;
 
                         setTimeout(() => {
-                            window.parent.postMessage({action: 'heightChanged', data: {height: document.body.scrollHeight}}, 'http://localhost:5173/');
+                            window.parent.postMessage({action: 'heightChanged', data: {height: document.body.scrollHeight}}, endpoint);
                         }, 240);
                     };
 
@@ -682,7 +697,7 @@
                         initCount += 1;
 
                         setTimeout(() => {
-                            window.parent.postMessage({action: 'heightChanged', data: {height: document.body.scrollHeight}}, 'http://localhost:5173/');
+                            window.parent.postMessage({action: 'heightChanged', data: {height: document.body.scrollHeight}}, endpoint);
                         }, 240);
                     }
 
@@ -705,7 +720,7 @@
                     }
 
                     if (message.data.action === 'orderChanged') {
-                        handleOrderChange(message.data.data.instanceId, message.data.data.parentId, message.data.data.order);
+                        handleOrderChange(message.data.data.instanceId, message.data.data.parentInstanceId, message.data.data.order);
                     }
 
                     if (message.data.action === 'elementAttributeRemoved') {

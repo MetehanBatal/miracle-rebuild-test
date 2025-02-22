@@ -3,6 +3,8 @@
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ url, fetch }) {
     const pageId = url.searchParams.get('pageId');
+    const hostname = url.hostname;
+    const isDev = hostname === 'localhost';
 
     console.log('Page ID:', pageId); // Logs on the server
 
@@ -10,7 +12,7 @@ export async function load({ url, fetch }) {
         throw new Error('The "pageId" query parameter is required.');
     }
 
-    const apiUrl = `https://api.mtrix.io/prod/contentModeling/pageContent?pageId=${encodeURIComponent(pageId)}`;
+    const apiUrl = `http://localhost:3030/prod/contentModeling/pageContent?pageId=${encodeURIComponent(pageId)}`;
 
     try {
         const response = await fetch(apiUrl);
@@ -24,7 +26,7 @@ export async function load({ url, fetch }) {
         const components = data.components;
         const cssData = data.cssData;
 
-        return { pageContent, components, cssData, pageId };
+        return { pageContent, components, cssData, pageId, isDev, url: JSON.stringify(url) };
     } catch (error) {
         console.error('Error in load function:', error);
         throw new Error('An error occurred while fetching the page content.');

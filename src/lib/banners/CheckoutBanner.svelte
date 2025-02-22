@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { remainingTime } from '../../stores/functions';
+	import { remainingTime } from '../../stores/toolkit/functions';
 
 	let hasTimer = true;
 	let discountCode = false;
