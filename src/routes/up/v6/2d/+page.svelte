@@ -23,7 +23,7 @@
        
     onMount(() => {
         if($purchaseLog.shippingAddress?.country !== "US") {
-            usdPrefix = "USD";
+            usdPrefix = "USD ";
         }
     })
 </script>

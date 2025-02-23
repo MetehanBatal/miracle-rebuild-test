@@ -7,6 +7,8 @@
 
     import Banner from "$lib/banners/UpsellBanner.svelte";
     import Visuals from "$lib/upsells/sheets/Visuals.svelte";
+    import ColorSelection from '$lib/upsells/sheets/ColorSelection.svelte';
+    import VariantSelection from '$lib/upsells/sheets/VariantSelection.svelte';
     import Timer from "../../../../lib/shared/Timer.svelte";
 
     const bannerContent = {
@@ -14,6 +16,25 @@
         h3: `Get our newest silver infused comforter <span class="color-green">25% OFF!</span>`,
         p: `We are offering our premium comforter to new customers only!`,
     };
+
+	let selectedColor = 'white';
+	let variantOptions = [
+        {
+			value: '1',
+			label: 'White - King/Cali King - $105*',
+			id: 1,
+		},
+		{
+			value: '2',
+			label: 'White - Queen - $97*',
+			id: 2
+		}
+	];
+    let selectedVariant = 1;
+
+	let colorOptions = [
+		'white', 'stone'
+	];
 
     const hasSlider = true;
     const imageCount = 5;
@@ -23,7 +44,7 @@
        
     onMount(() => {
         if($purchaseLog.shippingAddress?.country !== "US") {
-            usdPrefix = "USD";
+            usdPrefix = "USD ";
         }
     })
 </script>
@@ -60,45 +81,26 @@
                 <div class="icon-holder">
                     <img src="/assets/images/icons/tick.svg" alt="Upsell - Miracle Made">
                 </div>
-                <p>Makes you feel up to 4° cooler upon contact</p>
+                <p><strong>Makes you feel up to 4° cooler upon contact</strong></p>
             </li>
             <li>
                 <div class="icon-holder">
                     <img src="/assets/images/icons/tick.svg" alt="Upsell - Miracle Made">
                 </div>
-                <p>Silvadur™ Antimicrobial Technology</p>
+                <p><strong>Silvadur™ Antimicrobial Technology</strong></p>
             </li>
             <li>
                 <div class="icon-holder">
                     <img src="/assets/images/icons/tick.svg" alt="Upsell - Miracle Made">
                 </div>
-                <p>Hypoallergenic</p>
+                <p><strong>Hypoallergenic</strong></p>
             </li>
         </ul>
 
         <div class="form">
-            <div class="variant-selection">
-                <p class="form-heading">Choose Color/Size: <span id="color-name">WHITE</span></p>
-            
-                <div class="color-selection" style="margin-bottom: 10px;">
-                    <div class="colors">
-    
-                        <label class="color white selected">
-                            <input type="radio" name="color" value="white" checked>
-                        </label>
-    
-                        <label class="color stone">
-                            <input type="radio" name="color" value="stone">
-                        </label>
-                    
-                    </div>
-                </div>
-    
-                <select class="variants">
-                    <option class="text-capitalize" value="1">White - Queen - {usdPrefix}$132*</option>
-                    <option class="text-capitalize" value="2">White - King/Cali King - {usdPrefix}$139.30*</option>
-                </select>
-            </div>
+			<ColorSelection bind:selectedColor={selectedColor} colorOptions={colorOptions} />
+
+            <VariantSelection bind:selectedSize={selectedVariant} variantOptions={variantOptions} />
     
             <div class="price-container">
                 <div class="deal-endtime">
@@ -111,11 +113,11 @@
             </div>
         </div>
 
-        <a href="#" class="checkout-accept-upsell button---yes-upsell cta-button" data-upsell-type="upgrade-variant" data-upsell-param1="37673238298774" data-next-url="/up/v6/4b?upsell=true">
+        <a href="#" class="checkout-accept-upsell button---yes-upsell cta-button" data-upsell-type="upgrade-variant" data-upsell-param1="37673238298774" data-next-url="/up/v6/8b?upsell=true">
             Yes, Add To My Order with 1-Click-buy!
         </a>
 
-        <a href="/up/v6/4b" class="link">No, thank you! I don’t want to get this one-time-only offer.</a>
+        <a href="/up/v6/8b" class="link">No, thank you! I don’t want to get this one-time-only offer.</a>
 
         <hr />
 

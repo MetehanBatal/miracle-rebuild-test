@@ -22,7 +22,7 @@
 				<p>10,078+ FIVE-STAR REVIEWS</p>
 			</div>
 
-			<div class="cta-button">WRITE A REVIEW</div>
+			<a href="https://www.miraclebrand.co/a/review/write" target="_blank" class="cta-button">WRITE A REVIEW</a>
 		</div>
 
 		<div class="reviews-grid" class:expanded={reviewsExpanded}>

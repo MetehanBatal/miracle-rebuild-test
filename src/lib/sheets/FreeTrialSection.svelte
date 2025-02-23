@@ -20,15 +20,15 @@
 
 				<h3>30-night trial</h3>
 
-				<p>Try Miracle for 30 nights. Donʼt like it? <br> Get a 100% refund. No questions.</p>
+				<p>Try Miracle for 30 nights. Donʼt like it? Get a 100% refund. No questions.</p>
 			</div>
 
 			<div class="free-trial-item">
 				<img width="64" height="36" data-src="/assets/icons/shipping.svg" alt="try-sc-img" class="lozad">
 
-				<h3>Fast shipping</h3>
+				<h3>Free shipping</h3>
 
-				<p>Fast shipping is included <br> with every order</p>
+				<p>Free shipping is included <br> with every order</p>
 			</div>
 
 			<div class="free-trial-item">

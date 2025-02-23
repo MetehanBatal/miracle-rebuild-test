@@ -4,7 +4,7 @@ export let sheetFAQs = [{
 	},
 	{
 		"question": "What are the products made of?",
-		"answer": "<strong>Miracle Made® Sheets</strong> are made from our innovative <strong>Miracle Clean & Cool™</strong> fabrics which are NASA-inspired and silver-infused. Generation 1 of the product is made from premium long-staple cotton. Generation 2 of the product is made from a new, improved, premium Eucalyptus Lyocell blend. The majority of <strong>Miracle Made® Sheets</strong> shipping in 2023 are made from the Generation 2 product, though some colors still ship in Generation 1. Both generations of the product feel luxuriously soft and are infused with silver."
+		"answer": "<strong>Miracle Made® Sheets</strong> are made from our innovative <strong>Miracle Clean & Cool™</strong> fabrics which are NASA-inspired and silver-infused. Generation 1 of the product is made from premium long-staple cotton. Generation 2 of the product is made from a new, improved, premium Eucalyptus Lyocell blend. The majority of <strong>Miracle Made® Sheets</strong> shipping in 2025 are made from the Generation 2 product, though some colors still ship in Generation 1. Both generations of the product feel luxuriously soft and are infused with silver."
 	},
 	{
 		"question": "How often do they have to be washed compared to regular sheets?",

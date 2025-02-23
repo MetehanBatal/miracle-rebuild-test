@@ -145,6 +145,10 @@ onMount(() => {
 
 		checkoutHench.listenPromoCodeAddup();
 	});
+
+	return () => {
+		document.body.removeAttribute('class');
+	}
 });
 
 // Refer to +error.svelte

@@ -24,7 +24,7 @@ import { onMount } from 'svelte';
        
     onMount(() => {
         if($purchaseLog.shippingAddress?.country !== "US") {
-            usdPrefix = "USD";
+            usdPrefix = "USD ";
         }
     })
 </script>

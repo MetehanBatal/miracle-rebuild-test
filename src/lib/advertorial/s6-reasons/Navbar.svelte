@@ -1,5 +1,5 @@
 <!-- START - Navbar -->
-<nav class="header">
+<nav class="header navbar">
 	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="181.694" height="38.307" viewBox="0 0 181.694 38.307">
         <defs>
           <clipPath id="clip-path">

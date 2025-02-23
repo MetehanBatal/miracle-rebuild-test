@@ -21,10 +21,14 @@
 			<div class="divider"></div>
 			<a href="https://help.miraclebrand.co/en-US" target="_blank">Policies and Helpdesk</a>
 		</div>
-		<p>©️ 2023 Miracle Made® LLC. All Rights Reserved.</p>
+		<p>©️ 2025 Miracle Made® LLC. All Rights Reserved.</p>
 	</div>
 
-	<p>You can email us anytime at <a class="underline" href="mailto:orders@miraclebrand.co">orders@miraclebrand.co.</a></p>
+	<p>
+		<span>You can email us anytime at <a class="underline" href="mailto:orders@miraclebrand.co">orders@miraclebrand.co.</a></span>
+		<span style="display:block;">Phone Support is available from 9AM to 5PM Eastern Standard Time</span>
+		<span>Monday through Friday. Call us at <a href="tel:+18886834875" class="underline">+1 888-683-4875</a></span>
+	</p>
 
 	<div class="accepted-cards">
 		<img class="lozad" width="40" height="26" data-src="/assets/images/icons/paypal.webp" alt="Miracle Made - Accepts Paypal" />

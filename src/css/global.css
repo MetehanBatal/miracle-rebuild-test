@@ -188,7 +188,7 @@ img {
         display: block;
     }
     .desktop-hidden {
-        display: none;
+        display: none!important;
     }
     .banner.top-banner p {
         display: flex;

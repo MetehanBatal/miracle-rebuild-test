@@ -35,49 +35,19 @@
 		white: 7,
 		sky_blue: 6,
 		navy_blue: 5,
-		sand : 5,
-		sage : 6,
+		sand: 5,
+		sage: 6,
 		terracotta: 7,
-		charcoal : 6,
+		charcoal: 6,
+		slate_blue: 7,
+		silver_grey: 7,
+		rosewood: 7
 	};
 
-	let headlines = [
-		'Self-cleaning & self-cooling sheets. Transform how you sleep.',
-		'Temp-regulating and self-cleaning sheets. Hotel-quality sleep, every night.'
-	];
-
-	let landerExperiment = $page.data?.indices?.findIndex(indice => indice['experimentId'] === 350095693703) || [];
-
-	let selectedColor = $page.data.indices?.[landerExperiment]?.variants?.find((v) => v.name === 'Colors')?.component;
-	let selectedColorIndex =  selectedColor === 'WhiteColor' ? 1 :
-							  selectedColor === 'SkyBlueColor' ? 2 :
-							  selectedColor === 'NavyBlueColor' ? 3 :
-							  selectedColor === 'SandColor' ? 4 :
-							  selectedColor === 'SageColor' ? 5 :
-							  selectedColor === 'TerracottaColor' ? 6 :
-							  selectedColor === 'CharcoalColor' ? 7 :
-							  0;
-	let freeGiftVisible = $page.data.indices?.[landerExperiment]?.variants?.find((v) => v.name === 'Free Gift')?.component === 'On';
+	let selectedColorIndex = 0;
+	let freeGiftVisible = true;
 	// // only queen (index: 2) and king (index: 3) are available to select
 	// // thus +2 to the returning index...
-	let selectedHeadlineIndex = $page.data.indices?.[landerExperiment]?.variants?.find((v) => v.name === 'Headline Copy')?.component === 'HeadlineII' ? 1 : 0;
-	let selectedHeadline = headlines[selectedHeadlineIndex];
-
-	// Prepare components
-	//
-
-	// Convert the object into an array of key-value pairs
-	let colorArray = Object.entries(colors);
-
-	// Use the known itemIndex to remove the item from the array
-	let [ removedItem ] = colorArray.splice(selectedColorIndex, 1);
-
-	// Insert the removed item at the desired index
-	colorArray.unshift(removedItem);
-
-	// Convert the array back into an object
-	let updatedColors = Object.fromEntries(colorArray);
-	colors = updatedColors;
 
 	let selectedSizeIndex = 2;
 	let selectedSize = sizes[selectedSizeIndex];
@@ -94,7 +64,7 @@
 	let towelImg;
 
 	let quantity = 1;
-	let color = Object.keys(colors)[0];
+	let selectedColor = Object.keys(colors)[0];
 
 	let slider = '';
 
@@ -162,7 +132,7 @@
 	function handleColorSelection(element, value) {
 		slider.moveToIdx(0);
 
-		color = value;
+		selectedColor = value;
 
 		initLozad();
 
@@ -207,7 +177,7 @@
 
 		clearCart().then(x => {
 			let cartObject = {};
-			cartObject[sheetVariants[selectedSize][color]['variantId']] = quantity;
+			cartObject[sheetVariants[selectedSize][selectedColor]['variantId']] = quantity;
 
 			window.checkout.apiClient.setVariantQuantities(cartObject).then(x => {
 				window.checkout.setCart(x);
@@ -242,7 +212,7 @@
 		if (filtration === 'color') {
 			document.querySelectorAll('.size-selection-box .dropdown-option').forEach((dropdown) => dropdown.classList.remove('out-of-stock'));
 			Object.keys(sheetVariants).forEach(function(key) {
-				if ( !Object.keys(sheetVariants[key]).includes(color) ) {
+				if ( !Object.keys(sheetVariants[key]).includes(selectedColor) ) {
 					document.querySelectorAll(`.size-option[data-value="${key}"`).forEach((sizeInner) => sizeInner.classList.add('out-of-stock'));
 				}
 			});
@@ -252,7 +222,7 @@
 	function handleOutOfStock(type) {
 		if (type === 'color') {
 			let matchingSize = Object.keys(sheetVariants).find(function(key) {
-				return Object.keys(sheetVariants[key]).includes(color) === true
+				return Object.keys(sheetVariants[key]).includes(selectedColor) === true
 			});
 
 			size = matchingSize;
@@ -267,14 +237,14 @@
 
 		if (type === 'size') {
 			const value = 'stone';
-			color = value;
+			selectedColor = value;
 			document.querySelector('input[value=stone]').checked = true;
 			filterVariants('color');
 		}
 	}
 
-	$: color, color === "stone" || color === "sky_blue" || color === "white" || color === "charcoal"  ? towelImg = color : towelImg = "white";
-	$: color, console.log('Color changed to: ', color, colors);
+	$: selectedColor, selectedColor === "stone" || selectedColor === "sky_blue" || selectedColor === "white" || selectedColor === "charcoal"  ? towelImg = selectedColor : towelImg = "white";
+	$: selectedColor, console.log('Color changed to: ', selectedColor, colors);
 </script>
 
 
@@ -282,25 +252,25 @@
 
 <section class="atc-section">
 	<div class="slider-box">
-		<span class="hidden">{color}</span>
+		<span class="hidden">{selectedColor}</span>
 		<div class="slider-box" id="hero-slider">
-			{#each Array(colors[color]) as image, index}
+			{#each Array(colors[selectedColor]) as image, index}
 			{#if index !== 0}
 			<div class="slide keen-slider__slide">
-				<img data-tag-name="heroImage" style="object-fit: cover;" class="lozad" data-src={`/assets/images/sliders_avif/${color}/${index + 1}.webp`} width={Math.floor(parseInt(innerWidth) * 0.55)} alt="Miracle Made - Sheets" />
+				<img data-tag-name="heroImage" style="object-fit: cover;" class="lozad" data-src={`/assets/images/sliders_avif/${selectedColor}/${index + 1}.webp`} width={Math.floor(parseInt(innerWidth) * 0.55)} alt="Miracle Made - Sheets" />
 			</div>
 			{:else}
 			<div class="slide keen-slider__slide">
-				<img data-tag-name="heroImage" style="object-fit: cover;" src={`/assets/images/sliders_avif/${color}/${index + 1}.webp`} width={Math.floor(parseInt(innerWidth) * 0.55)} alt="Miracle Made - Sheets" />
+				<img data-tag-name="heroImage" style="object-fit: cover;" src={`/assets/images/sliders_avif/${selectedColor}/${index + 1}.webp`} width={Math.floor(parseInt(innerWidth) * 0.55)} alt="Miracle Made - Sheets" />
 			</div>
 			{/if}
 			{/each}
 		</div>
 
 		<div class="thumbnails">
-			{#each Array(colors[color]) as image, index}
+			{#each Array(colors[selectedColor]) as image, index}
 			{#if isDesktop}
-			<img data-tag-name="heroThumbnail" style="object-fit: cover;" width="50" height="50" class="thumbnail pagination-indicator" class:active={currentActiveThumb === index} on:click={(e) => {handleThumbnailClick(e, index)}} src={`/assets/images/sliders_avif/${color}/${index + 1}_thumb.webp`} alt="Miracle Made - Sheets">
+			<img data-tag-name="heroThumbnail" style="object-fit: cover;" width="50" height="50" class="thumbnail pagination-indicator" class:active={currentActiveThumb === index} on:click={(e) => {handleThumbnailClick(e, index)}} src={`/assets/images/sliders_avif/${selectedColor}/${index + 1}_thumb.webp`} alt="Miracle Made - Sheets">
 			{:else}
 			<div data-tag-name="paginationBullet" class="bullet-point pagination-indicator" class:active={currentActiveThumb === index}></div>
 			{/if}
@@ -331,7 +301,11 @@
 				<p class="text-sm">10,078+ FIVE-STAR REVIEWS</p>
 			</div>
 
-			<h1 data-tag-name="headline">{selectedHeadline}</h1>
+			<h1 data-tag-name="headline">
+				Temp-regulating and self-cleaning sheets. 
+				<br class="mobile-hidden">
+				Hotel-quality sleep, every night.
+			</h1>
 
 			<p data-tag-name="mainParagraph" class="mb-20">Infused with silver that helps prevent up to 99.7% of bacteria growth and helps keep you at the perfect temperature all night long.</p>
 
@@ -361,8 +335,8 @@
 						<div class="ratings-holder align-left color-holder">
 							<p data-tag-name="colorText" class="color-text">COLOR: </p>
 							<div data-tag-name="selectedColorText" class="color-name">
-								<p id="selected-color-name">{color.replace('_', ' ')}</p>
-								{#if color === "terracotta" || color === "sage"}
+								<p id="selected-color-name">{selectedColor.replace('_', ' ')}</p>
+								{#if selectedColor === "terracotta" || selectedColor === "sage"}
 									<div data-tag-name="limitedEditionMark" class="limited-edition-mark">    
 										<svg width="139px" height="23px" viewBox="0 0 139 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsxlink="http://www.w3.org/1999/xlink">
 											<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -402,12 +376,8 @@
 
 						<div class="colors">
 							{#each Object.keys(colors) as color, index}
-							<label data-tag-name={`colorSelector${index}`} for={color} data-color={color} on:click|self={(e) => handleColorSelection(e, color)}>
-								{#if index === 0}
-								<input type="radio" aria-label={color} id={color} name="color" value={color} checked>
-								{:else}
-								<input type="radio" aria-label={color} id={color} name="color" value={color}>
-								{/if}
+							<label class:selected={color === selectedColor} for={color} data-color={color} on:click|self={(e) => handleColorSelection(e, color)}>
+								<input type="radio" aria-label={color} id={color} name="color" value={color} checked={color === selectedColor}>
 							</label>
 							{/each}
 						</div>
@@ -451,7 +421,7 @@
 						</div>
 					</div>
 				</div>
-				{#if sheetVariants.selectedSize?.color?.left}
+				{#if sheetVariants.selectedSize?.selectedColor?.left}
 					<div class="high-demand-notification">
 						<svg width="32px" height="22px" viewBox="0 0 32 22" version="1.1" xmlns="http://www.w3.org/2000/svg">
 							<title>delivery-truck</title>
@@ -465,17 +435,17 @@
 						</svg>
 
 						<p>
-							<span class="high-demand-highlighted font-bold">HIGH DEMAND:</span> Only <span class="high-demand-highlighted"> {sheetVariants[selectedSize][color]['left']} </span>left in stock - order soon
+							<span class="high-demand-highlighted font-bold">HIGH DEMAND:</span> Only <span class="high-demand-highlighted"> {sheetVariants[selectedSize][selectedColor]['left']} </span>left in stock - order soon
 						</p>
 					</div>
 				{/if}
 
 				<div class="flex border-block">
-					<p id="strikethrough-price">${sheetVariants[selectedSize][color].regularPrice}</p>
-					<p id="product-price">${sheetVariants[selectedSize][color].price}</p>
+					<p id="strikethrough-price">${sheetVariants[selectedSize][selectedColor].regularPrice}</p>
+					<p id="product-price">${sheetVariants[selectedSize][selectedColor].price}</p>
 
 					<div class="lozenge">
-						<p><span id="saving-percentage">{ sheetVariants[selectedSize][color].productSavings }%</span> OFF - YOU SAVE $<span>{parseInt(sheetVariants[selectedSize][color].regularPrice) - parseInt(sheetVariants[selectedSize][color].price)}</span></p>
+						<p><span id="saving-percentage">{ sheetVariants[selectedSize][selectedColor].productSavings }%</span> OFF - YOU SAVE $<span>{parseInt(sheetVariants[selectedSize][selectedColor].regularPrice) - parseInt(sheetVariants[selectedSize][selectedColor].price)}</span></p>
 					</div>
 				</div>
 
@@ -573,7 +543,7 @@
 						</g>
 					</svg>
 
-					<p>FAST Shipping {#if $page.data.city != 'undefined'}to {$page.data.city} {/if}& Returns</p>
+					<p>FREE Shipping & Returns</p>
 				</div>
 
 				<div class="separator"></div>

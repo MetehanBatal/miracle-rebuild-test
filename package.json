@@ -17,6 +17,7 @@
 	"type": "module",
 	"dependencies": {
 		"@edge-runtime/cookies": "^4.0.0",
+		"choices.js": "^11.0.4",
 		"crypto-js": "^4.2.0",
 		"gender-detection": "^0.1.0",
 		"intl-tel-input": "^18.2.1",

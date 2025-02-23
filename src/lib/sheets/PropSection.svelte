@@ -22,7 +22,7 @@
 					<div class="prop-item-content">
 						<h3>Antibacterial</h3>
 
-						<p>Helps fight odors and prevents up to 99.7% of bacteria growth.						</p>
+						<p>Helps fight odors and prevents up to 99.7% of bacteria growth.</p>
 					</div>
 				</li>
 
@@ -56,9 +56,9 @@
 					</div>
 
 					<div class="prop-item-content">
-						<h3>Designed for Healthier Skin</h3>
+						<h3>Cleaner Sleep</h3>
 
-						<p>Fabrics that repel bacteria growth so you can stop resting on filth.</p>
+						<p>Fabrics that minimize bacteria build-up, helping you rest on fresher, cleaner bedding every night.</p>
 					</div>
 				</li>
 			</ul>

@@ -3,16 +3,39 @@
     import { browser } from "$app/environment";
     import { onMount } from 'svelte';
 
-    console.log($purchaseLog);
-
     import Banner from "$lib/banners/UpsellBanner.svelte";
     import Visuals from "$lib/upsells/sheets/Visuals.svelte";
-    import Timer from "../../../../lib/shared/Timer.svelte";
+    import ColorSelection from '$lib/upsells/sheets/ColorSelection.svelte';
+	import SizeSelection from '$lib/upsells/sheets/SizeSelection.svelte';
+    import FabricSelection from '$lib/upsells/sheets/FabricSelection.svelte';
+    import Timer from "$lib/shared/Timer.svelte";
 
     const bannerContent = {
         h3: `Your order isn't complete without pillowcases!`,
         p: `As a special Thank You for joining the Miracle family we want to offer you our premium Pillowcases for <span class="color-green">20% OFF!</span></p>`,
     };
+
+    let fabricOptions = [
+        {
+            label: '2x Signature',
+            value: 'signature'
+        },
+        {
+            label: '2x Extra Luxe',
+            value: 'luxe',
+            bestSeller: true
+        }
+    ];
+    let sizeOptions = [
+		'standard', 'king'
+	];
+    let selectedFabric = 'signature';
+	let selectedSize = 'standard';
+	let selectedColor = 'white';
+
+	let colorOptions = [
+		'stone', 'white', 'sky_blue', 'navy', 'sand', 'sage', 'terracotta', 'charcoal', 'silver_grey', 'rosewood'
+	];
 
     const hasSlider = true;
     const imageCount = 5;
@@ -25,7 +48,7 @@
        
     onMount(() => {
         if($purchaseLog.shippingAddress?.country !== "US") {
-            usdPrefix = "USD";
+            usdPrefix = "USD ";
         }
     })
 </script>
@@ -33,7 +56,7 @@
 <Banner {bannerContent} />
 
 <div class="upsell-box ">
-    <Visuals {hasSlider} {imageCount} {slug} />
+    <Visuals {selectedColor} {hasSlider} {imageCount} {slug} />
 
     <div class="upsell-content up-3b">
         <div class="trusted-by">
@@ -76,93 +99,12 @@
                     >Select your deal below for your 2 pillowcases!</strong
                 >
             </p>
-            <div class="fabric-selection">
-                <p class="form-heading">1. Choose a Fabric</p>
+            
+            <FabricSelection bind:selectedFabric={selectedFabric} fabricOptions={fabricOptions} />
     
-                <div class="selections selection-fabric">
-                    <label class="selection selected">
-                        <input
-                            type="radio"
-                            name="fabric"
-                            value="signature"
-                            checked
-                        />
-    
-                        <div>
-                            <p class="sm"><strong>2x Standard</strong></p>
-                        </div>
-                    </label>
-    
-                    <label class="selection">
-                        <input type="radio" name="fabric" value="luxe" />
-    
-                        <div>
-                            <div class="badge-holder">
-                                <p class="sm">
-                                    <strong>2x Extra Luxe</strong>
-                                </p>
-    
-                                <div class="best-seller-badge">BEST SELLER</div>
-                            </div>
-                        </div>
-                    </label>
-                </div>
-            </div>
-    
-            <div class="size-selection">
-                <p class="form-heading">2. Choose a Size</p>
-    
-                <div class="selections">
-                    <label class="selection selected">
-                        <input type="radio" name="size" value="standard" checked />
-                        <p class="size-selector">Standard</p>
-                    </label>
-    
-                    <label class="selection">
-                        <input type="radio" name="size" value="king" />
-                        <p class="size-selector">King</p>
-                    </label>
-                </div>
-            </div>
-    
-            <div class="color-selection">
-                <p class="form-heading">
-                    3. Choose color: <span id="color-name">Stone</span>
-                </p>
-    
-                <div class="colors">
-                    <label class="color stone">
-                        <input type="radio" name="color" value="stone" checked />
-                    </label>
-    
-                    <label class="color white">
-                        <input type="radio" name="color" value="white" />
-                    </label>
-    
-                    <label class="color sky_blue">
-                        <input type="radio" name="color" value="sky_blue" />
-                    </label>
-    
-                    <label class="color navy">
-                        <input type="radio" name="color" value="navy" />
-                    </label>
-    
-                    <label class="color sand">
-                        <input type="radio" name="color" value="sand" />
-                    </label>
-                    <label class="color sage">
-                        <input type="radio" name="color" value="sage" />
-                    </label>
-    
-                    <label class="color terracotta">
-                        <input type="radio" name="color" value="terracotta" />
-                    </label>
-    
-                    <label class="color charcoal">
-                        <input type="radio" name="color" value="charcoal" />
-                    </label>
-                </div>
-            </div>
+            <SizeSelection bind:selectedSize={selectedSize} sizeOptions={sizeOptions} />
+	
+			<ColorSelection bind:selectedColor={selectedColor} colorOptions={colorOptions} />
     
             <hr />
     
@@ -185,7 +127,7 @@
         </div>
 
         <a href="#" class="checkout-accept-upsell button---yes-upsell cta-button" data-upsell-type="upgrade-variant" data-upsell-param1="39509018149014" data-next-url="/up/v6/6b?upsell=true">
-            Yes, Upgrade My Order with 1-Click-buy!
+            Yes, Add To My Order with 1-Click-buy!
         </a>
 
         <a href="/up/v6/6b" class="link">No, thank you! I don’t want to get this one-time-only offer.</a>

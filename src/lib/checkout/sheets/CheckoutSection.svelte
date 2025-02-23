@@ -5,6 +5,7 @@
 	import { onMount } from 'svelte';
 
 	let toggled = false;	
+	let couponAdded = false;
 
 	async function inferGender(event) {
 		let firstName = event.target.value;
@@ -33,7 +34,24 @@
 		}
 	}
 
+	function checkCouponValidation() {
+		if (checkoutData.cart.localCart.state.discountTotal > 0) {
+			couponAdded = true;
+		} else {
+			couponAdded = false;
+		}
+	}
+
 	onMount(() => {
+		window.checkoutReadyCallbacks = window.checkoutReadyCallbacks || [];
+		window.checkoutReadyCallbacks.push(() => {
+			checkCouponValidation();
+			let hasWarranty = checkout.cart.localCart.state.lineItems.some((item) => item.variantId === 42536178319510);
+			console.log('HAS: ', hasWarranty);
+			if (!hasWarranty) {
+				RTC.setVariantQuantities({42536178319510: 1})
+			}
+		});
 		setTimeout(() => {
 
 			// let totalValue = document.querySelector('.total-line .checkout-money').innerHTML;
@@ -106,16 +124,19 @@
 		</div>
 
 		<div class="discount-box">
-			<form name="coupon_form_desktop">
+			{#if !couponAdded}
+			<form name="coupon_form_desktop" on:submit={checkCouponValidation}>
 				<input type="text" class="input checkout-coupon-field" maxlength="256" name="coupon_desktop_field" placeholder="Promo code (optional)" id="coupon_desktop_field" />
 				<a href="#" class="checkout-coupon-button">Redeem</a>
 			</form>
-			<div class="discount-success hidden">
+			{:else}
+			<div class="discount-success">
 				<div class="discount-message">
 					<span class="discount-applied">Discount Applied! You're saving</span>
-					<span class="checkout-discount-value">0.00</span>
+					<span class="checkout-discount-value">{checkoutData.cart.localCart.state.discountTotal.toLocaleString('en-US', {style: 'currency', currency: 'USD'})}</span>
 				</div>
 			</div>
+			{/if}
 			<div class="w-form-fail discount-warning">
 				<div>This discount code cannot be used</div>
 			</div>
@@ -354,7 +375,7 @@
 			<div class="guarantee-box">
 				<img src="/assets/icons/money-back.png" alt="Money Back Guarantee by Miracle Made" />
 				<p>
-					<strong>30-Day Guarantee:</strong> Miracle offers a 30-Day Money
+					<strong>30-Day Guarantee:</strong> Pattern Brands offers a 30-Day Money
 					Back Guarantee in case you don't fall in love with our product.
 				</p>
 			</div>
@@ -446,6 +467,7 @@ span {
 	align-items: center;
 
 	width: 100%;
+	height: auto;
 
 	margin-bottom: 4.8rem;
 }
@@ -478,6 +500,7 @@ span {
 
 .steps {
 	display: flex;
+	align-items: center;
 	gap: 2.4rem;
 
 	margin: 1.2rem 0;

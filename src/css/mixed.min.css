@@ -27,7 +27,7 @@ details > summary::-webkit-details-marker{
 }
 
 .cta-button.atc-button{
-	font-family: sans-serif;
+	font-family: "Brandon", sans-serif;
 	font-weight:600;
 	text-decoration:none;
 	background-color: transparent;
@@ -176,7 +176,7 @@ input{
 
 h1{
 	font-size:3.2rem;
-	line-height:3.6rem;
+	line-height:3.5rem;
 	margin-top:1rem
 }
 
@@ -625,11 +625,12 @@ p{
 			justify-content:center;
 			align-items:center;
 			position:sticky;
-			top:0;
+			top:20rem;
+			height: 100%;
 			width:50%;
 			min-height:100vh;
 			overflow:auto;
-			padding:21rem 2rem 6rem
+			padding:5rem 2rem 6rem
 		}
 		.prop-img-holder{
 			width:6rem
@@ -689,8 +690,8 @@ p{
 	}
 
 	.flex.border-block {
-		padding-block: 2rem;
-		border-block: .1rem solid #718399;
+		padding-block: 1.5rem;
+		border-block: .1rem solid #000;
 	}
 	
 	/*:global(.atc-sticky-banner.scrolled){
@@ -737,14 +738,16 @@ p{
 		justify-content:space-between
 	}
 	.reviews-section .cta-button{
-		width:18rem;
-		height:4rem;
+		width:17rem;
+		height:4.7rem;
 		display:flex;
-		font-family:sans-serif;
+		font-family:'Brandon',sans-serif;
 		align-items:center;
 		justify-content:center;
-		font-size:1.5rem;
-		font-weight:700
+		text-decoration: none;
+		font-size:1.4rem;
+		font-weight:700;
+		border-radius:.4rem;
 	}
 	.reviews-section{
 		display:flex;
@@ -755,7 +758,7 @@ p{
 	.reviews-container{
 		display:flex;
 		flex-direction:column;
-		gap:1.6rem;
+		gap:2.5rem;
 		max-width:110rem;
 		width:100%
 	}
@@ -775,8 +778,8 @@ p{
 	}
 
 /*FREE TRIAL SECCTION*/
-.free-trial-item {
-		max-width: 23rem;
+	.free-trial-item {
+		width:100%;
 	}
 
 	.free-trial-item p {
@@ -816,7 +819,9 @@ p{
 		flex-direction:column;
 		align-items:center;
 		justify-content:center;
-		gap:.5rem
+		max-width:30rem;
+		gap:.5rem;
+		margin-bottom:2.5rem
 	}
 	.free-trial-section p{
 		font-weight:300;
@@ -836,10 +841,6 @@ p{
 		display:flex;
 		align-items:center;
 		width:100%
-	}
-	.free-trial-item{
-		margin-bottom:2.5rem;
-		max-width:22.5rem
 	}
 	.free-trial-item:last-child img{
 		transform:rotateY(-180deg)
@@ -1468,15 +1469,12 @@ p{
 		opacity:.5
 	}
 	.color-selection-box{
+		gap:1.2rem;
 		margin-right:1rem
 	}
-	.colors{
-		display:flex;
-		gap:min(1rem,1.75vw)
-	}
 	.colors label{
-		width:3rem;
-		height:3rem;
+		width:3.5rem;
+		height:3.5rem;
 		border:.1rem solid rgba(114,118,131,.5);
 		background-clip:content-box;
 		padding:.2rem;
@@ -1502,8 +1500,10 @@ p{
 	.colors label.out-of-stock:after{
 		transform:translateY(1.8rem) rotate(-45deg)
 	}
-	label.color:has(input:checked){
+	label.color:has(input:checked),
+	.colors label.selected{
 		border-color:#000;
+		padding:.4rem
 	}
 	.checkout-holder label:has(input:checked){
 		padding: 0;
@@ -1639,6 +1639,7 @@ p{
 	}
 	#strikethrough-price{
 		color:#7c7c7c;
+		font-weight: 500;
 		text-decoration:line-through
 	}
 	.lozenge{
@@ -1660,8 +1661,8 @@ p{
 
 	.form-selection {
 		flex-direction: column;
-		gap: 1rem;
-		margin-bottom: 1rem;
+		gap: 1.5rem;
+		margin-bottom: 2rem;
 	}
 
 	.ratings-holder {
@@ -1699,6 +1700,7 @@ p{
 		scroll-padding: 0 5px;
 		scroll-snap-align: start;
 		width: auto;
+		max-width: 35rem;
 	}
 
 	.ratings-holder.size-holder {
@@ -1767,6 +1769,12 @@ p{
 		}
 	}
 
+	@media screen and (min-width: 1440px) {
+		.slider-box img{
+			object-position: 58% 0%
+		}
+	}
+
 	label[data-color=terracotta] {
 		background-color: #9b482d;
 	}
@@ -1776,6 +1784,15 @@ p{
 	label[data-color=sage] {
 		background-color: #6b827c;
 	}
+	label[data-color=slate_blue] {
+		background-color: #7d97ac;
+	}
+	label[data-color=silver_grey] {
+		background-color: #bcbfc4;
+	}
+	label[data-color=rosewood] {
+		background-color: #cdafad;
+	}
 
 	.color-name {
 		display: flex;
@@ -1784,7 +1801,7 @@ p{
 	}
 
 	.color-holder {
-		height: 2.5rem;
+		height: 3.5rem;
 	}
 
 	.free-badge svg {
@@ -1934,7 +1951,9 @@ p{
 		max-height:none
 	}
 	.atc-content{
-		padding:5.6rem 2rem 2.4rem
+		max-height: 84rem;
+		padding:4rem 1.6rem 1.8rem;
+		overflow:auto;
 	}
 	.atc-content p.mb-20{
 		font-size:1.5rem
@@ -1945,7 +1964,7 @@ p{
 		height:6.2rem
 	}
 	.sold-out-badge{
-		top:8%;
+		top:4%;
 		right:0;
 		gap:.8rem;
 		width:15rem;
@@ -2075,8 +2094,8 @@ p{
 	}
 
 	.delivered-text {
-		font-size: 1.6rem;
-		line-height: 1.8rem;
+		font-size: 1.6rem!important;
+		line-height: 1.8rem!important;
 	}
 
 	.low-text {
@@ -2134,6 +2153,7 @@ p{
 	}
 	.review-author{
 		font-size:1.6rem;
+		font-family:"Ellenluff larken", sans-serif;
 		line-height:2.4rem;
 		margin-bottom:.4rem
 	}
@@ -2148,6 +2168,7 @@ p{
 	}
 	.review-content-text{
 		font-size:1.3rem;
+		font-weight: 400;
 		line-height:1.6rem;
 		margin:1.2rem 0;
 		padding-bottom:2rem
@@ -2219,7 +2240,7 @@ p{
 		align-items: center;
 		padding-block: 1rem;
 		border-radius: 1.2rem;
-		margin-top: 1.5rem;
+		margin-top: 2.5rem;
 	}
 	.bonus-badge {
 		position: relative;
@@ -2245,7 +2266,6 @@ p{
 
 	.free-towel-input {
 		position: relative;
-		margin-left: clamp(10px,10px + 1.5vw,20px);
 		width: 2rem
 	}
 
@@ -2274,7 +2294,7 @@ p{
 		margin: 0!important;
 
 		background-color: #FFFFFF;
-		border: .2rem solid rgba(0,0,0,.4);
+		border: .2rem solid rgba(0,0,0,1);
 		border-radius: .4rem;
 	}
 
@@ -2301,10 +2321,11 @@ p{
 
 	.free-towel-image {
 		position: relative;						
+		margin-left: 1rem;
 	}
 	.free-towel-image .free-badge {
 		position: absolute;
-		top: 0;
+		top: -.7rem;
 		right: 0;
 	}
 

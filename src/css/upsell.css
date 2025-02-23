@@ -582,8 +582,6 @@ form p.sm {
 	cursor: pointer;
 }
 
-
-
 .d-flex-center {
 	display: flex;
 	align-items: center;
@@ -593,6 +591,7 @@ form p.sm {
 .selection p {
 	font-weight: 500;
 	font-size: 1.1rem;
+	text-transform: capitalize;
 }
 
 .badge-holder {
@@ -690,6 +689,7 @@ form p.sm {
 
 .colors {
 	display: flex;
+	flex-wrap: wrap;
 	gap: 0.8rem;
 }
 
@@ -708,6 +708,21 @@ form p.sm {
 	background-clip:content-box;
 	padding:.3rem;
 	border-radius: 0rem;
+}
+
+.upsell-box .colors label.selected{
+	border-color:#000
+}
+
+.color input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	z-index: 2;
+	cursor: pointer;
 }
 
 .color {
@@ -804,6 +819,14 @@ form p.sm {
 
 .color.charcoal {
 	background-color: #4D4C4D;
+}
+
+.color.silver_grey {
+	background-color: #BCBFC4;
+}
+
+.color.rosewood {
+	background-color: #d4b5b8;
 }
 
 .choices {
